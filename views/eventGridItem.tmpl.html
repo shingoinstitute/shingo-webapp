@@ -1,0 +1,18 @@
+<div class="imgContainer" layout="column" background-img="{{event.Banner_URL__c}}" background-color="red" layout-align="center center">
+    <span class="eventName"><h2 ng-show="displayExtra()">{{event.Name}}</h2><h4 ng-show="!displayExtra()">{{event.Name}}</h4></span>
+</div>
+<div layout="column" layout-padding layout-align="start start">
+    <h2 ng-show="displayExtra()">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</h2>
+    <b ng-show="!displayExtra()">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</b>
+    <div layout="row" layout-fill layout-align="center center" ng-show="displayExtra()">
+        <div flex layout layout-align="center center">
+            <md-button class="md-primary md-raised" ng-href="{{event.Registration_Link__c}}" target="_blank">Register</md-button>
+        </div>
+        <div flex>
+            Some List Here
+        </div>
+    </div>
+</div>
+<md-grid-tile-footer>
+    <h3>{{event.Display_Location__c}}</h3>
+</md-grid-tile-footer>
