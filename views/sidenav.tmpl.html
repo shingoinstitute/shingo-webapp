@@ -1,15 +1,18 @@
 <md-sidenav
     layout="column"
     layout-fill
-    class="md-sidenav-left"
+    class="md-sidenav-left roboto"
     md-component-id="sidenav"
-    md-is-locked-open="$mdMedia('gt-md')"
-    md-whiteframe="4">
-    <md-toolbar class="md-accent">
-    </md-toolbar>
+    md-is-locked-open="$mdMedia('gt-md')">
+
+    <img src="http://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png" />
+    <span flex="5"><!-- spacer --></span>
+    <md-divider></md-divider>
+    <span flex="5"><!-- spacer --></span>
     <md-content layout-padding>
-        <a ui-sref="eventList" ui-sref-active="eventList" class="md-primary">
-            Event List
+        <a ui-sref="{{state.name}}" ng-repeat="state in states" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">
+            {{state.title}}
         </a>
     </md-content>
+
 </md-sidenav>

@@ -7,15 +7,30 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+
     <link rel="stylesheet" href="/node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/css/app.css">
+
+    <link rel="Bookmark" href="/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body ng-app="core">
-    <div layout="row" layout-fill>
-        <sidenav flex-gt-md="20"></sidenav>
-        <ui-view layout-fill flex></ui-view>
+    <div layout="row" layout-fill ng-controller="MainController as mc">
+        <sidenav md-whiteframe="10"></sidenav>
+        <div flex layout-fill>
+            <md-toolbar layout class="md-primary" md-whiteframe="3">
+                <md-button hide-gt-md ng-click="mc.toggle('sidenav')">
+                    <md-icon md-font-icon>menu</md-icon>
+                </md-button>
+            </md-toolbar>
+            <div flex layout-fill style="overflow-y: auto; padding-bottom: 100px;">
+                <ui-view layout-fill flex></ui-view>
+            </div>
+        </div>
     </div>
 
     <!-- Vendor -->
@@ -25,6 +40,7 @@
     <script src="/node_modules/angular-material/angular-material.min.js"></script>
     <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 
     <!-- Application -->
     <script src="/js/__dataLayer.js"></script>
@@ -33,16 +49,21 @@
 
     <!-- Controllers -->
     <script src="/js/controllers/EventListController.js"></script>
+    <script src="/js/controllers/EventDetailController.js"></script>
     <script src="/js/controllers/EventGridItemController.js"></script>
     <script src="/js/controllers/NavController.js"></script>
+    <script src="/js/controllers/MainController.js"></script>
+    <script src="/js/controllers/SpeakerItemController.js"></script>
 
     <!-- Directives -->
     <script src="/js/directives/EventGridItem.js"></script>
     <script src="/js/directives/BackgroundImage.js"></script>
     <script src="/js/directives/Sidenav.js"></script>
+    <script src="/js/directives/SpeakerItem.js"></script>
 
     <!-- Services -->
     <script src="/js/services/Events.js"></script>
+    <script src="/js/services/Speakers.js"></script>
 
 </body>
 

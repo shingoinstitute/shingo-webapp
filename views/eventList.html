@@ -1,25 +1,35 @@
 <div layout="column" layout-fill>
-    <md-toolbar layout class="md-primary">
-        <span flex><!-- spacer --></span>
-        <md-button hide-gt-md ng-click="vm.toggle('sidenav')">
-            <md-icon md-font-icon>menu</md-icon>
-        </md-button>
-    </md-toolbar>
-    <md-content layout-fill layout-padding>
+    <md-content layout="column" style="background: none; margin-left: 10px;" layout-fill layout-padding>
         <md-grid-list
-            md-cols-sm="6" md-cols-md="12" md-cols-gt-md="24"
+            md-cols="6" md-cols-md="12" md-cols-gt-md="24"
             md-row-height="1:1"
             md-row-height-gt-md="4:4"
-            md-gutter="12px">
-            <!--<event-grid-item event="ev" ng-repeat="ev in vm.events | orderBy: 'Start_Date__c'" layout-fill></event-grid-item>-->
+            md-gutter="15px"
+            layout-padding>
             <md-grid-tile 
                 class="md-whiteframe-6dp"
                 md-rowspan="{{vm.getRows(ev)}}"
                 md-colspan="{{vm.getCols(ev)}}"
-                md-rowspan-gt-md="{{vm.getRows(ev) * 2}}"
+                md-rowspan-gt-md="{{vm.getRows(ev)}}"
                 md-colspan-gt-md="{{vm.getCols(ev) * 2}}"
                 ng-repeat="ev in vm.events | orderBy: 'Start_Date__c'">
-                <event-grid-item event="ev" layout-fill></event-grid-item>
+                <event-grid-item event="ev" is-large="vm.isLarge(ev)" layout-fill></event-grid-item>
+            </md-grid-tile>
+        </md-grid-list>
+        <span flex="5"><!-- spacer --></span>
+        <md-grid-list
+            md-cols="6" md-cols-md="12" md-cols-gt-md="24"
+            md-row-height="1:1"
+            md-gutter="15px"
+            layout-padding>
+            <md-grid-tile 
+                class="md-whiteframe-6dp"
+                md-rowspan="{{vm.getRows(ev)}}"
+                md-colspan="{{vm.getCols(ev)}}"
+                md-rowspan-gt-md="{{vm.getRows(ev)}}"
+                md-colspan-gt-md="{{vm.getCols(ev) * 2}}"
+                ng-repeat="ev in vm.studyTours | orderBy: 'Start_Date__c'">
+                <event-grid-item event="ev" is-large="vm.isLarge(ev)" layout-fill></event-grid-item>
             </md-grid-tile>
         </md-grid-list>
     </md-content>

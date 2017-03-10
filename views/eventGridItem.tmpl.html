@@ -1,18 +1,38 @@
-<div class="imgContainer" layout="column" background-img="{{event.Banner_URL__c}}" background-color="red" layout-align="center center">
-    <span class="eventName"><h2 ng-show="displayExtra()">{{event.Name}}</h2><h4 ng-show="!displayExtra()">{{event.Name}}</h4></span>
-</div>
-<div layout="column" layout-padding layout-align="start start">
-    <h2 ng-show="displayExtra()">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</h2>
-    <b ng-show="!displayExtra()">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</b>
-    <div layout="row" layout-fill layout-align="center center" ng-show="displayExtra()">
-        <div flex layout layout-align="center center">
-            <md-button class="md-primary md-raised" ng-href="{{event.Registration_Link__c}}" target="_blank">Register</md-button>
-        </div>
-        <div flex>
-            Some List Here
+<div class="roboto">
+    <div
+        class="imgContainer"
+        layout="column"
+        md-colors="{background: 'accent'}"
+        background-img="{{event.Banner_URL__c}}"
+        background-color="{{event.Primary_Color__c}}"
+        background-height="{{isLarge ? '200px' : 'initial'}}"
+        background-watch="event"
+        layout-align="center center">
+        <span ng-class="{'eventName': event.Banner_URL__c != undefined}" class="md-accent"><h2 ng-show="isLarge">{{event.Name}}</h2><h4 ng-show="!isLarge">{{event.Name}}</h4></span>
+    </div>
+    <div layout="column" layout-padding layout-align="center center" class="raleway">
+        <h2 ng-show="isLarge">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</h2>
+        <b ng-show="!isLarge">{{event.Start_Date__c | date : short }} - {{event.End_Date__c | date : short}}</b>
+        <div layout="row" layout-fill layout-align="center center" ng-show="isLarge">
+            <div flex layout="column" layout-align="center center">
+                <h3>Some Keynotes</h3>
+                <speaker-item layout-fill person="speaker" ng-repeat="speaker in highlightList"></speaker-item>
+            </div>
+            <div flex layout layout-align="center center">
+                <md-button
+                    class="md-primary md-raised"
+                    ng-href="#/events/{{event.Id}}"
+                    ui-sref="event({id: event.Id})">
+                        Learn More
+                </md-button>
+            </div>
         </div>
     </div>
+    <md-grid-tile-footer
+        md-colors="{background: 'warn', color: 'grey-50'}"
+        background-img=""
+        background-color="{{event.Primary_Color__c}}"
+        background-watch="event">
+        <h3>{{event.Display_Location__c}}</h3>
+    </md-grid-tile-footer>
 </div>
-<md-grid-tile-footer>
-    <h3>{{event.Display_Location__c}}</h3>
-</md-grid-tile-footer>

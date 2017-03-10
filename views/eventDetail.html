@@ -1,0 +1,89 @@
+<md-content
+    layout="column"
+    layout-align="start center"
+    style="background: none;"
+    class="roboto">
+    <div
+        layout="column"
+        layout-align="center center"
+        background-img="{{vm.event.Banner_URL__c}}"
+        background-watch="vm.event"
+        flex="30"
+        class="detail-banner">
+        <div class="detail-text">
+            <h2>{{vm.event.Name}}</h2>
+            <h1>{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
+            <h3>{{vm.event.Display_Location__c}}</h3>
+        </div>
+    </div>
+    <span flex="5"><!-- spacer --></span>
+    <div
+        layout="row"
+        layout-padding
+        layout-align="center center">
+        <div flex>
+            <md-card
+                md-whiteframe="6" layout-align="center center">
+                <img style="width: 50%" src="http://res.cloudinary.com/shingo/image/upload/v1487870817/Events/IntlConference/2017/29th-Logo-web.png" />
+            </md-card>
+        </div>
+        <span flex="5"><!-- spacer --></span>
+        <md-card flex md-whiteframe="6" layout-align="start center">
+            <span class="raleway"><h3>About the {{vm.event.Name}}</h3></span>
+            <span ng-bind-html="vm.event.Sales_Text__c">
+        </md-card>
+    </div>
+    <span flex="5"><!-- spacer --></span>
+    <div
+        layout="row"
+        layout-padding
+        layout-align="center center">
+        <md-card md-whiteframe="6" style="padding: 0">
+            <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+                <md-card-header-text>
+                    Pricing
+                </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+                <div layout="row" layout-align="center center">
+                    <table class="price-table" cellpadding="0">
+                        <tr class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
+                            <td>{{price.Name}}</td><td style="text-align: right">{{price.Price__c | currency}}</td>
+                        </tr>
+                    </table>
+                    <md-button class="md-raised md-primary" ng-href="vm.event.Registration_Link__c" target="_blank">Register</md-button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <span flex="5"><!-- spacer --></span>
+        <md-card flex md-whiteframe="6" style="padding: 0">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/LmWhXbdOze0" frameborder="0" allowfullscreen=""></iframe>
+        </md-card>
+    </div>
+    <span flex="5"><!-- spacer --></span>
+    <div
+        layout="row"
+        layout-padding
+        style="width: 100%"
+        layout-align="center center">
+        <md-card flex md-whiteframe="6" style="padding: 0; width: 100%">
+            <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+                <md-card-header-text>
+                    Highlights
+                </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+                <div layout="row">
+                    <div layout="column" flex>
+                        <h3>Some Keynotes</h3>
+                        <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers"></speaker-item>
+                    </div>
+                    <span flex="5"><!-- spacer --></span>
+                    <div flex layout layout-align="center center">
+                        <span ng-bind-html="vm.event.Sales_Text__c"></span>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

@@ -6,7 +6,8 @@
             return {
                 restrict: 'EA',
                 scope: {
-                    event: '='
+                    event: '=',
+                    isLarge: '='
                 },
                 templateUrl: 'views/eventGridItem.tmpl.html',
                 controller: 'EventGridItemController'
