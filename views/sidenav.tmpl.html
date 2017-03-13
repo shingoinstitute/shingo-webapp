@@ -3,13 +3,32 @@
     layout-fill
     class="md-sidenav-left roboto"
     md-component-id="sidenav"
-    md-is-locked-open="$mdMedia('gt-md')">
+    md-is-locked-open="$mdMedia('gt-lg')">
 
-    <img src="http://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png" />
-    <span flex="5"><!-- spacer --></span>
+    <div
+        layout
+        layout-align="center center"
+        class="logo"
+        md-colors="{background: 'accent'}"
+        ng-show="showDetails">
+        <img ng-src="{{logo}}" />
+    </div>
+    <img ng-show="!showDetails" ng-src="{{logo}}" />
     <md-divider></md-divider>
     <span flex="5"><!-- spacer --></span>
     <md-content layout-padding>
+        <div ng-show="showDetails">
+            <b>Event Details</b>
+            <a ui-sref="event({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Summary</a>
+            <a ui-sref="event.agenda({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Agenda</a>
+            <a ui-sref="event.sessions({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sessions</a>
+            <a ui-sref="event.speakers({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Speakers</a>
+            <a ui-sref="event.exhibitors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Exhibitors</a>
+            <a ui-sref="event.recipients({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Recipients</a>
+            <a ui-sref="event.sponsors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sponsors</a>
+            <a ui-sref="event.attendees({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">Attendees</a>
+            <md-divider></md-divider>
+        </div>
         <a ui-sref="{{state.name}}" ng-repeat="state in states" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">
             {{state.title}}
         </a>

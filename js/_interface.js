@@ -78,12 +78,31 @@
     // Listen for Access error (via $stateChangeError)
     // Go to proper state or log if you don't know what to do
     angular.module('interface')
-        .run(['$rootScope', '$state', function ($rootScope, $state) {
+        .run(['$rootScope', '$state', 'Events', function ($rootScope, $state, Events) {
             $rootScope.$state = $state;
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 console.error("$stateChangeError");
                 console.error("ERROR: ", error);
             });
+
+            $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+                if(toState.name == 'eventList') {
+                    $rootScope.$broadcast('change logo', 'http://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png')
+                    $rootScope.$broadcast('toggle details', {state: false, event: {}});
+                } else {
+                    Events.get(toParams.id)
+                    .then(function(ev){
+                        $rootScope.$broadcast('change logo', ev.Logo__c);
+                        var data = {};
+                        data.state = true;
+                        data.event = ev;
+                        $rootScope.$broadcast('toggle details', data);
+                    })
+                    .catch(function(err){
+                        console.error("ERROR: ", err);
+                    });
+                }
+            })
         }]);
 
     // Make lodash.js available

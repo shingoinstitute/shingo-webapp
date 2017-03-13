@@ -21,14 +21,17 @@
 <body ng-app="core">
     <div layout="row" layout-fill ng-controller="MainController as mc">
         <sidenav md-whiteframe="10"></sidenav>
-        <div flex layout-fill>
+        <div flex layout="column" layout-fill>
             <md-toolbar layout class="md-primary" md-whiteframe="3">
-                <md-button hide-gt-md ng-click="mc.toggle('sidenav')">
+                <md-button hide-gt-lg ng-click="mc.toggle('sidenav')">
                     <md-icon md-font-icon>menu</md-icon>
                 </md-button>
             </md-toolbar>
-            <div flex layout-fill style="overflow-y: auto; padding-bottom: 100px;">
+            <div ng-show="!mc.showLoading" flex layout-fill style="overflow-y: auto;">
                 <ui-view layout-fill flex></ui-view>
+            </div>
+            <div ng-show="mc.showLoading" layout flex layout-fill layout-align="center center">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
             </div>
         </div>
     </div>

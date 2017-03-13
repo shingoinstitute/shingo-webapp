@@ -8,7 +8,7 @@
 
         return {
             listUpcoming: function(){
-                return $http.get('https://api.shingo.org/salesforce/events?force_refresh=true')
+                return $http.get('http://api.shingo.org/salesforce/events?force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) throw response.data.error;
                     var events = new Array();
@@ -24,7 +24,7 @@
             get: function(id){
                 if(!id) return $q.reject(Error("Must pass an id to get an event."));
 
-                return $http.get('https://api.shingo.org/salesforce/events/' + id + '?force_refresh=true')
+                return $http.get('http://api.shingo.org/salesforce/events/' + id + '?force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) return $q.reject(response.data.error);
                     return $q.resolve(response.data.event);

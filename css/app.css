@@ -15,7 +15,7 @@ event-grid-item .imgContainer > .eventName {
     border-radius: 5px;
 }
 
-md-sidenav > img {
+md-sidenav img {
     width: 80%;
     padding: 5px;
     margin: 10px auto;
@@ -26,8 +26,30 @@ body {
     overflow: hidden;
 }
 
+event-grid-item .md-button {
+    width: 90%;
+}
+
+.smallEventDetail {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.smallEventDetail h4 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
 ui-view md-grid-list {
     max-width: 1558px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer:hover {
+    box-shadow: rgba(109, 109, 109, 0.76) 0px 6px 20px 6px;
 }
 
 .nav-item {
@@ -70,24 +92,24 @@ ui-view md-grid-list {
     text-align: left;    
 }*/
 
-.price-row > td {
+.price-row > span {
     display: table-cell;
     padding: 10px;
     border-top: 1px solid #e5e5e5;
 }
 
-.price-row > td:first-child {
+.price-row > span:first-child {
     border-left: 1px solid #e5e5e5;
 }
 
-.price-row > td:last-child {
+.price-row > span:last-child {
     border-right: 1px solid #e5e5e5;
 }
 
-.price-table > tbody > .price-row:last-child > td {
+.price-table > .price-row:last-child > span {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.price-table > tbody > .price-row:nth-child(2n) > td {
+.price-table > .price-row:nth-child(2n) > span {
     background: rgba(119, 136, 153, 0.23);
 }

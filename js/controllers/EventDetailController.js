@@ -2,11 +2,12 @@
     'use strict';
 
     angular.module('interface')
-    .controller('EventDetailController', ['$scope', 'event', 'highlightSpeakers', EventDetailController]);
+    .controller('EventDetailController', ['$scope', '$sce', 'event', 'highlightSpeakers', EventDetailController]);
 
-    function EventDetailController($scope, event, highlightSpeakers){
+    function EventDetailController($scope, $sce, event, highlightSpeakers){
         var vm = this;
         vm.event = event;
+        vm.event.Video__c = $sce.trustAsResourceUrl(vm.event.Video__c);
         vm.highlightSpeakers = highlightSpeakers;
     }
 })();
