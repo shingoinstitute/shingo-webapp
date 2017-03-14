@@ -57,8 +57,8 @@
                     event: ["Events", "$stateParams", function (Events, $stateParams) {
                         return Events.get($stateParams.id);
                     }],
-                    highlightSpeakers: ["Speakers", "$stateParams", "$q", function(Speakers, $stateParams, $q){
-                        return Speakers.list($stateParams.id)
+                    highlightSpeakers: ["Events", "$stateParams", "$q", function(Events, $stateParams, $q){
+                        return Events.speakers($stateParams.id)
                         .then(function(speakers){
                             var random = _.sampleSize(_.differenceWith(speakers, [{'Is_Keynote_Speaker__c': false}], _.isEqual), 5);
                             console.debug('Got random speakers', random);
@@ -68,8 +68,22 @@
                 }
             }
 
-            $stateProvider.state(eventListState);
+            var eventAgendaState = {
+                name: 'agenda',
+                url: '/events/:id/agenda',
+                controller: 'AgendaController',
+                controllerAs: 'vm',
+                templateUrl: 'views/agenda.html',
+                resolve: {
+                    agenda: ["Events", "$stateParams", function(Events, $stateParams){
+                        return Events.agenda($stateParams.id)
+                    }]
+                }
+            }
+
+            $stateProvider.state(eventAgendaState);
             $stateProvider.state(eventDetailState);
+            $stateProvider.state(eventListState);
 
             $urlRouterProvider.otherwise('/events');
         });

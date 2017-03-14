@@ -21,6 +21,10 @@ md-sidenav img {
     margin: 10px auto;
 }
 
+md-sidenav a.home {
+    text-align: center;
+}
+
 body {
     height: 100vh;
     overflow: hidden;
@@ -70,8 +74,18 @@ ui-view md-grid-list {
     font-family: 'Roboto', sans-serif;
 }
 
+.roboto-large {
+    font-family: 'Roboto', sans-serif;
+    font-size: 150%;
+}
+
 .raleway {
     font-family: 'Raleway', sans-serif;
+}
+
+.raleway-large {
+    font-family: 'Raleway', sans-serif;
+    font-size: 150%;
 }
 
 .detail-banner {

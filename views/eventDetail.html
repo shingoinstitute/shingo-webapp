@@ -13,10 +13,10 @@
         background-height="300px"
         background-color="{{vm.event.Primary_Color__c"
         background-watch="vm.event"
-        class="detail-banner">
+        class="detail-banner raleway-large">
         <div class="detail-text">
             <h2>{{vm.event.Name}}</h2>
-            <h1>{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
+            <h1 class="roboto">{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
             <h3>{{vm.event.Display_Location__c}}</h3>
         </div>
     </div>
@@ -49,7 +49,7 @@
                 </md-card-header-text>
             </md-card-header>
             <md-card-content layout="column" layout-align="center center">
-                    <div flex class="price-table" cellpadding="0">
+                    <div flex class="price-table" layout-fill>
                         <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
                             <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}}</span>
                         </div>

@@ -27,12 +27,14 @@
                     <md-icon md-font-icon>menu</md-icon>
                 </md-button>
             </md-toolbar>
-            <div ng-show="!mc.showLoading" flex layout-fill style="overflow-y: auto;">
-                <ui-view layout-fill flex></ui-view>
-            </div>
+            <!-- Begin Frame content -->
             <div ng-show="mc.showLoading" layout flex layout-fill layout-align="center center">
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
             </div>
+            <div ng-show="!mc.showLoading" flex layout-fill style="overflow-y: auto;">
+                <ui-view layout-fill flex></ui-view>
+            </div>
+            <!-- End Frame content -->
         </div>
     </div>
 
@@ -52,6 +54,7 @@
 
     <!-- Controllers -->
     <script src="/js/controllers/EventListController.js"></script>
+    <script src="/js/controllers/AgendaController.js"></script>
     <script src="/js/controllers/EventDetailController.js"></script>
     <script src="/js/controllers/EventGridItemController.js"></script>
     <script src="/js/controllers/NavController.js"></script>
@@ -66,7 +69,6 @@
 
     <!-- Services -->
     <script src="/js/services/Events.js"></script>
-    <script src="/js/services/Speakers.js"></script>
 
 </body>
 

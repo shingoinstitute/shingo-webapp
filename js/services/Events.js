@@ -24,11 +24,29 @@
             get: function(id){
                 if(!id) return $q.reject(Error("Must pass an id to get an event."));
 
-                return $http.get('http://api.shingo.org/salesforce/events/' + id + '?force_refresh=true')
+                return $http.get('https://api.shingo.org/salesforce/events/' + id + '?force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) return $q.reject(response.data.error);
                     return $q.resolve(response.data.event);
                 });
+            },
+            speakers: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get speakers for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/speakers?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.speakers);
+                });
+            },
+            agenda: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get the agenda for an event."));
+                
+                return $http.get('https://api.shingo.org/salesforce/events/days?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.days);
+                })
             }
         }
     }
