@@ -13,8 +13,9 @@
                 <h2>{{event.Name}}</h2>
             </div>
             <div class="smallEventDetail" ng-show="!isLarge">
-                <h4>{{event.Name}}</h4>
+                <h3>{{event.Name}}</h3>
                 <b>{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</b>
+                <h4>Click to Learn More</h4>
             </div>
         </span>
     </div>

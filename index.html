@@ -26,13 +26,20 @@
                 <md-button hide-gt-lg ng-click="mc.toggle('sidenav')">
                     <md-icon md-font-icon>menu</md-icon>
                 </md-button>
+                <span flex></span>
+                <span ng-show="mc.showFilter" class="raleway">
+                    <md-input-container class="filter">
+                        <input type="text" placeholder="filter..." ng-model="mc.filter" />
+                    </md-input-container>
+                </span>
+                <span flex="5"></span>
             </md-toolbar>
-            <div ng-show="!mc.showLoading" flex layout-fill style="overflow-y: auto;">
+            <!-- Begin Frame content -->
+            <div flex layout-fill style="overflow-y: auto;">
+                <md-progress-linear ng-show="mc.showLoading" md-mode="indeterminate" style="position: absolute;"></md-progress-linear>
                 <ui-view layout-fill flex></ui-view>
             </div>
-            <div ng-show="mc.showLoading" layout flex layout-fill layout-align="center center">
-                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-            </div>
+            <!-- End Frame content -->
         </div>
     </div>
 
@@ -45,28 +52,35 @@
     <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 
-    <!-- Application -->
+    <!-- Application Modules -->
     <script src="/js/__dataLayer.js"></script>
     <script src="/js/_interface.js"></script>
     <script src="/js/app.js"></script>
 
     <!-- Controllers -->
     <script src="/js/controllers/EventListController.js"></script>
+    <script src="/js/controllers/AgendaController.js"></script>
     <script src="/js/controllers/EventDetailController.js"></script>
     <script src="/js/controllers/EventGridItemController.js"></script>
     <script src="/js/controllers/NavController.js"></script>
     <script src="/js/controllers/MainController.js"></script>
     <script src="/js/controllers/SpeakerItemController.js"></script>
+    <script src="/js/controllers/SessionItemController.js"></script>
+    <script src="/js/controllers/SessionDetailController.js"></script>
 
     <!-- Directives -->
     <script src="/js/directives/EventGridItem.js"></script>
     <script src="/js/directives/BackgroundImage.js"></script>
     <script src="/js/directives/Sidenav.js"></script>
     <script src="/js/directives/SpeakerItem.js"></script>
+    <script src="/js/directives/SessionItem.js"></script>
+    <script src="/js/directives/SessionDetail.js"></script>
 
     <!-- Services -->
     <script src="/js/services/Events.js"></script>
     <script src="/js/services/Speakers.js"></script>
+    <script src="/js/services/Sessions.js"></script>
+    <script src="/js/services/Days.js"></script>
 
 </body>
 

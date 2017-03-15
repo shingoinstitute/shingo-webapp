@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('interface')
-    .controller('MainController', ['$scope', '$rootScope', '$mdSidenav', MainController]);
+    .controller('MainController', ['$scope', '$rootScope', '$mdSidenav', 'Sessions', MainController]);
 
-    function MainController($scope, $rootScope, $mdSidenav){
+    function MainController($scope, $rootScope, $mdSidenav, Sessions){
         var vm = this;
 
         vm.showLoading = true;
@@ -12,6 +12,10 @@
         vm.toggle = function(id){
             $mdSidenav(id).toggle();
         }
+
+        $rootScope.$on('toggle filter', function(ev, state){
+            vm.showFilter = state;
+        });
 
         $rootScope.$on('$stateChangeStart', function(){
             console.log("Showing loading")

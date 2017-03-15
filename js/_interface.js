@@ -57,8 +57,8 @@
                     event: ["Events", "$stateParams", function (Events, $stateParams) {
                         return Events.get($stateParams.id);
                     }],
-                    highlightSpeakers: ["Speakers", "$stateParams", "$q", function(Speakers, $stateParams, $q){
-                        return Speakers.list($stateParams.id)
+                    highlightSpeakers: ["Events", "$stateParams", "$q", function(Events, $stateParams, $q){
+                        return Events.speakers($stateParams.id)
                         .then(function(speakers){
                             var random = _.sampleSize(_.differenceWith(speakers, [{'Is_Keynote_Speaker__c': false}], _.isEqual), 5);
                             console.debug('Got random speakers', random);
@@ -68,8 +68,53 @@
                 }
             }
 
-            $stateProvider.state(eventListState);
+            var eventAgendaState = {
+                name: 'agenda',
+                url: '/events/:id/agenda',
+                controller: 'AgendaController',
+                controllerAs: 'vm',
+                templateUrl: 'views/agenda.html',
+                resolve: {
+                    agenda: ["Events", "$stateParams", function(Events, $stateParams){
+                        return Events.agenda($stateParams.id)
+                    }]
+                }
+            }
+
+            var eventAgendaDayState = {
+                name: 'agenda.day',
+                url: '/:day',
+                parent: eventAgendaState,
+                controller: function($scope, day){ $scope.day = day; },
+                templateUrl: 'views/agendaDay.tmpl.html',
+                resolve: {
+                    day: ['Days', '$stateParams', function(Days, $stateParams){
+                        return Days.get($stateParams.day);
+                    }]
+                }
+            }
+
+            var eventAgendaSessionState = {
+                name: 'agenda.day.session',
+                url: '/:session',
+                parent: eventAgendaDayState,
+                controller: function($scope, session, speakers){ $scope.session = session; $scope.session.Speakers = speakers; },
+                template: '<session-detail session="session"></session-detail>',
+                resolve: {
+                    session: ["Sessions", "$stateParams", function(Sessions, $stateParams){
+                        return Sessions.get($stateParams.session);
+                    }],
+                    speakers: ["Sessions", "$stateParams", function(Sessions, $stateParams){
+                        return Sessions.speakers($stateParams.session);
+                    }]
+                }
+            }
+
+            $stateProvider.state(eventAgendaSessionState);
+            $stateProvider.state(eventAgendaDayState);
+            $stateProvider.state(eventAgendaState);
             $stateProvider.state(eventDetailState);
+            $stateProvider.state(eventListState);
 
             $urlRouterProvider.otherwise('/events');
         });
