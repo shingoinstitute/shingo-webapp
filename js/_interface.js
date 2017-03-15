@@ -81,6 +81,37 @@
                 }
             }
 
+            var eventAgendaDayState = {
+                name: 'agenda.day',
+                url: '/:day',
+                parent: eventAgendaState,
+                controller: function($scope, day){ $scope.day = day; },
+                templateUrl: 'views/agendaDay.tmpl.html',
+                resolve: {
+                    day: ['Days', '$stateParams', function(Days, $stateParams){
+                        return Days.get($stateParams.day);
+                    }]
+                }
+            }
+
+            var eventAgendaSessionState = {
+                name: 'agenda.day.session',
+                url: '/:session',
+                parent: eventAgendaDayState,
+                controller: function($scope, session, speakers){ $scope.session = session; $scope.session.Speakers = speakers; },
+                template: '<session-detail session="session"></session-detail>',
+                resolve: {
+                    session: ["Sessions", "$stateParams", function(Sessions, $stateParams){
+                        return Sessions.get($stateParams.session);
+                    }],
+                    speakers: ["Sessions", "$stateParams", function(Sessions, $stateParams){
+                        return Sessions.speakers($stateParams.session);
+                    }]
+                }
+            }
+
+            $stateProvider.state(eventAgendaSessionState);
+            $stateProvider.state(eventAgendaDayState);
             $stateProvider.state(eventAgendaState);
             $stateProvider.state(eventDetailState);
             $stateProvider.state(eventListState);

@@ -1,12 +1,18 @@
 <md-content
     layout="column"
+    layout-fill
     layout-align="start center"
-    style="background: none;"
+    style="background: none; overflow: hidden;"
     class="roboto">
     <div layout-padding layout-fill>
-        <md-tabs ng-show="vm.agenda.length" md-selected="0" md-border-bottom>
-            <md-tab ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" label="{{day.Display_Name__c}}">
-                <p>Agenda Details go here</p>
+        <md-tabs
+            layout-fill
+            ng-show="vm.agenda.length"
+            md-selected="vm.selected"
+            md-border-bottom
+            md-swipe-content>
+            <md-tab flex ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" label="{{day.Display_Name__c}}">
+                <ui-view flex/>
             </md-tab>
         </md-tabs>
     </div>
