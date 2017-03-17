@@ -5,15 +5,11 @@
     style="background: none; overflow: hidden;"
     class="roboto">
     <div layout-padding layout-fill>
-        <md-tabs
-            layout-fill
-            ng-show="vm.agenda.length"
-            md-selected="vm.selected"
-            md-border-bottom
-            md-swipe-content>
-            <md-tab flex ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" label="{{day.Display_Name__c}}">
-                <ui-view flex/>
-            </md-tab>
-        </md-tabs>
+        <md-nav-bar aria-label="Agenda Days" md-selected-nav-item="vm.currentNavItem">
+            <md-nav-item md-nav-click="null" ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" name="{{day.Id}}">
+                {{day.Display_Name__c}}
+            </md-nav-item>
+        </md-nav-bar>
+        <ui-view flex/>
     </div>
 </md-content>

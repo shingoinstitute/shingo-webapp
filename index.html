@@ -36,7 +36,7 @@
             </md-toolbar>
             <!-- Begin Frame content -->
             <div flex layout-fill style="overflow-y: auto;">
-                <md-progress-linear ng-show="mc.showLoading" md-mode="indeterminate" style="position: absolute;"></md-progress-linear>
+                <md-progress-linear ng-show="mc.showLoading" class="md-warn" md-mode="indeterminate" style="position: absolute;"></md-progress-linear>
                 <ui-view layout-fill flex></ui-view>
             </div>
             <!-- End Frame content -->
@@ -67,12 +67,17 @@
     <script src="/js/controllers/SpeakerItemController.js"></script>
     <script src="/js/controllers/SessionItemController.js"></script>
     <script src="/js/controllers/SessionDetailController.js"></script>
+    <!--<script src="/js/controllers/SessionsController.js"></script>-->
+    <script src="/js/controllers/SpeakersController.js"></script>    
+    <script src="/js/controllers/SpeakerDetailController.js"></script>    
 
     <!-- Directives -->
     <script src="/js/directives/EventGridItem.js"></script>
     <script src="/js/directives/BackgroundImage.js"></script>
     <script src="/js/directives/Sidenav.js"></script>
     <script src="/js/directives/SpeakerItem.js"></script>
+    <script src="/js/directives/SpeakerListItem.js"></script>
+    <script src="/js/directives/SpeakerDetail.js"></script>
     <script src="/js/directives/SessionItem.js"></script>
     <script src="/js/directives/SessionDetail.js"></script>
 

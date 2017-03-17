@@ -1,0 +1,18 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-align="start center"
+    style="background: none; overflow: hidden;"
+    class="roboto">
+    <div layout-padding layout-fill>
+        <md-nav-bar aria-label="Speaker Types" md-selected-nav-item="vm.currentNavItem">
+            <md-nav-item md-nav-click="null" name="keynote">
+                Keynote
+            </md-nav-item>
+            <md-nav-item md-nav-click="null" name="concurrent">
+                Concurrent
+            </md-nav-item>
+        </md-nav-bar>
+        <ui-view flex/>
+    </div>    
+</md-content>

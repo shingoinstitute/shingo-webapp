@@ -1,7 +1,14 @@
 <div layout="row" layout-fill style="overflow: hidden;">
     <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
         <md-list style="overflow: auto;">
-            <md-list-item class="md-2-line session-item-cont" md-colors="{'border-color': 'warn'}" ui-sref="agenda.day.session({session: session.Id})" ui-sref-active="active" ng-repeat="session in day.Shingo_Sessions__r.records | orderBy : 'Start_Date_Time__c' | filter : mc.filter">
+            <md-list-item
+                id="{{session.Id}}"
+                class="md-2-line session-item-cont"
+                md-colors="{'border-color': 'warn'}"
+                ui-sref="agenda.day.session({session: session.Id})"
+                ui-sref-active="active"
+                aria-label="Go to Session {{session.Session_Display_Name__r}}"
+                ng-repeat="session in day.Shingo_Sessions__r.records | orderBy : 'Start_Date_Time__c' | filter : mc.filter">
                 <session-item session="session"></session-item>
                 <md-divider></md-divider>
             </md-list-item>

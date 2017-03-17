@@ -84,8 +84,9 @@
             var eventAgendaDayState = {
                 name: 'agenda.day',
                 url: '/:day',
-                parent: eventAgendaState,
-                controller: function($scope, day){ $scope.day = day; },
+                controller: function($scope, $stateParams, day){ 
+                    $scope.day = day;
+                },
                 templateUrl: 'views/agendaDay.tmpl.html',
                 resolve: {
                     day: ['Days', '$stateParams', function(Days, $stateParams){
@@ -94,12 +95,10 @@
                 }
             }
 
-            var eventAgendaSessionState = {
-                name: 'agenda.day.session',
+            var eventSessionDetailState = {
                 url: '/:session',
-                parent: eventAgendaDayState,
-                controller: function($scope, session, speakers){ $scope.session = session; $scope.session.Speakers = speakers; },
-                template: '<session-detail session="session"></session-detail>',
+                controller: function($scope, $stateParams, session, speakers){ $scope.session = session; $scope.session.Speakers = speakers; $scope.eventId = $stateParams.id; },
+                template: '<session-detail session="session" event-id="eventId"></session-detail>',
                 resolve: {
                     session: ["Sessions", "$stateParams", function(Sessions, $stateParams){
                         return Sessions.get($stateParams.session);
@@ -110,7 +109,67 @@
                 }
             }
 
-            $stateProvider.state(eventAgendaSessionState);
+            var eventSessionsState = {
+                name: 'sessions',
+                url: '/events/:id/sessions',
+                controller: 'SessionsController',
+                controllerAs: 'vm',
+                templateUrl: 'views/sessions.html',
+                resolve: {
+                    sessions: ["Events", "$stateParams", function(Events, $stateParams){
+                        return Events.sessions($stateParams.id)
+                    }]
+                }
+            }
+
+            var eventSpeakersState = {
+                name: 'speakers',
+                url: '/events/:id/speakers',
+                controller: 'SpeakersController',
+                controllerAs: 'vm',
+                templateUrl: 'views/speakers.html'
+            }
+
+            var eventSpeakersTypeState = {
+                name: 'speakers.type',
+                url: '/:type',
+                controller: function($scope, speakers){ $scope.speakers = speakers; },
+                templateUrl: 'views/speakersType.tmpl.html',
+                resolve: {
+                    speakers: ["Events", "$stateParams", "$q", "_", function(Events, $stateParams, $q, _){
+                        return Events.speakers($stateParams.id)
+                        .then(function(speakers){
+                            var isKeynote = function(obj, comp){
+                                var is = (obj.Session_Speaker_Associations__r !== null) == comp.Is_Keynote;
+                                // console.log('is keynote', is);
+                                return is;
+                            }
+
+                            speakers = _.differenceWith(speakers, [{"Is_Keynote": !($stateParams.type == 'keynote')}], isKeynote);
+                            return $q.resolve(speakers);
+                        });
+                    }]
+                }
+            }
+
+            var eventSpeakerDetailState = {
+                name: 'speakers.type.details',
+                url: '/:speaker',
+                controller: function($scope, speaker){ $scope.speaker = speaker; },
+                template: '<speaker-detail person="speaker"></speaker-detail>',
+                resolve: {
+                    speaker: ["Speakers", "$stateParams", function(Speakers, $stateParams){
+                        return Speakers.get($stateParams.speaker);
+                    }]
+                }
+            }
+
+            $stateProvider.state(eventSpeakerDetailState);
+            $stateProvider.state(eventSpeakersTypeState);
+            $stateProvider.state(eventSpeakersState);
+            // $stateProvider.state('sessions.details', eventSessionDetailState);
+            // $stateProvider.state(eventSessionsState);
+            $stateProvider.state('agenda.day.session', eventSessionDetailState);
             $stateProvider.state(eventAgendaDayState);
             $stateProvider.state(eventAgendaState);
             $stateProvider.state(eventDetailState);
@@ -128,7 +187,16 @@
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 console.error("$stateChangeError");
                 console.error("ERROR: ", error);
+                console.debug("toState", toState);
+                console.debug("toParams", toParams);
+                console.debug("fromState", fromState);
+                console.debug("fromParams", fromParams);
             });
+
+            $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+                fromState.params = fromParams;
+                $state.previous = fromState;
+            })
 
             $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
                 if(toState.name == 'eventList') {
@@ -147,6 +215,7 @@
                         console.error("ERROR: ", err);
                     });
                 }
+
             })
         }]);
 

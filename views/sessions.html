@@ -1,0 +1,27 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-align="start center"
+    style="background: none; overflow: hidden;"
+    class="roboto">
+    <div layout-fill>
+        <div layout="row" layout-fill style="overflow: hidden;">
+            <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
+                <md-list style="overflow: auto;">
+                    <md-list-item
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sessions.details({session: session.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="session in vm.sessions | orderBy : 'Start_Date_Time__c' | filter : mc.filter">
+                        <session-item session="session"></session-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
+            </div>
+            <div flex layout-padding class="raleway">
+                <ui-view/>
+            </div>
+        </div>
+    </div>
+</md-content>
