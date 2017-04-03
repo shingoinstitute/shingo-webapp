@@ -1,0 +1,21 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start start">
+    <div ng-show="exhibitor.Organization__r.App_Abstract__c">
+        <h3>Summary</h3>
+        <hr>
+        <div ng-bind-html="exhibitor.Organization__r.App_Abstract__c"></div>
+        <br>
+        <div class="roboto" ng-show="exhibitor.Organization__r.Public_Contact_Email__c || exhibitor.Organization__r.Website">
+            <h3>Contact</h3>
+            <h5 ng-show="exhibitor.Organization__r.Public_Contact_Email__c">Email: <a href="mailto:{{exhibitor.Organization__r.Public_Contact_Email__c}}">{{exhibitor.Organization__r.Public_Contact_Email__c}}</a></h5>
+            <h5 ng-show="exhibitor.Organization__r.Website">Website: <a href="{{exhibitor.Organization__r.Website}}">{{exhibitor.Organization__r.Website}}</a></h5>
+        </div>
+    </div>
+    <div ng-show="!exhibitor.Organization__r.App_Abstract__c">
+        <h1>Content coming soon!</h1>
+    </div>
+    <span flex="10"><!-- spacer --></span>
+</md-content>

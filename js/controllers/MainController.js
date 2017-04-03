@@ -13,6 +13,10 @@
             $mdSidenav(id).toggle();
         }
 
+        $scope.isKeynote = function(obj){
+            return obj.Session_Speaker_Associations__r !== null;
+        }
+
         $rootScope.$on('toggle filter', function(ev, state){
             vm.showFilter = state;
         });

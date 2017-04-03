@@ -24,8 +24,6 @@
             if(newVal != oldVal) $state.go('speakers.type', {type: newVal});
         });
 
-        // $state.go('speakers.type', {type: 'keynote'})
-
         $scope.$emit('toggle filter', true);
     };
 

@@ -81,7 +81,7 @@
             <md-card-content layout-gt-sm="row">
                 <div layout="column" flex>
                     <h3>Some Keynotes</h3>
-                    <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers"></speaker-item>
+                    <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: vm.event.Id, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})"></speaker-item>
                 </div>
                 <span flex="5"><!-- spacer --></span>
                 <div flex layout="column">
