@@ -9,7 +9,8 @@
         return {
             restrict: 'EA',
             scope: {
-                session: '='
+                session: '=',
+                eventId: '='
             },
             templateUrl: 'views/sessionDetail.tmpl.html',
             controller: 'SessionDetailController'

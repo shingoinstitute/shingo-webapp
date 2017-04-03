@@ -1,0 +1,24 @@
+<div layout-fill>
+    <div layout="row" layout-fill style="overflow: hidden;">
+        <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
+            <md-list
+                id="speakerList"
+                style="overflow: auto;">
+                <md-list-item
+                    id="{{speaker.Id}}" 
+                    class="md-2-line session-item-cont"
+                    md-colors="{'border-color': 'warn'}"
+                    ui-sref="speakers.type.details({speaker: speaker.Id})"
+                    ui-sref-active="active"
+                    aria-label="Go to speaker {{speaker.Name}}"
+                    ng-repeat="speaker in speakers | orderBy : 'Name' | filter : mc.filter">
+                    <speaker-list-item person="speaker"></speaker-list-item>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
+        <div flex layout-padding class="raleway">
+            <ui-view/>
+        </div>
+    </div>
+</div>

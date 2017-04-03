@@ -9,5 +9,7 @@
         vm.event = event;
         vm.event.Video__c = $sce.trustAsResourceUrl(vm.event.Video__c);
         vm.highlightSpeakers = highlightSpeakers;
+
+        $scope.$emit('toggle filter', false);
     }
 })();
