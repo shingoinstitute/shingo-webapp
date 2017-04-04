@@ -19,7 +19,7 @@
         <div flex ng-show="session.Speakers.length">
             <h3>Speakers</h3>
             <hr>
-            <speaker-item person="speaker" ng-repeat="speaker in session.Speakers"  ui-sref="speakers.type.details({speaker: speaker.Id, id: eventId, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})" aria-label="Go to speaker {{speaker.Name}}"></speaker-item>
+            <speaker-item person="speaker" ng-repeat="speaker in session.Speakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: eventId, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})" aria-label="Go to speaker {{speaker.Name}}"></speaker-item>
         </div>
     </div>
     <!--<pre>{{session | json}}</pre>-->

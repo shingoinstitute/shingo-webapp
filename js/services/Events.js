@@ -55,7 +55,16 @@
                 .then(function(response){
                     if(!response.data.success) return $q.reject(response.data.error);
                     return $q.resolve(response.data.days);
-                })
+                });
+            },
+            exhibitors: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get exhibitors for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/exhibitors?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.exhibitors);
+                });
             }
         }
     }
