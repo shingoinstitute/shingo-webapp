@@ -11,7 +11,7 @@
             scope: {
                 session: '='
             },
-            templateUrl: 'views/sessionItem.tmpl.html',
+            templateUrl: 'views/sessions/sessionItem.tmpl.html',
             controller: 'SessionItemController'
         }
     });

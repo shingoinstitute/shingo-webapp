@@ -12,7 +12,7 @@
                 session: '=',
                 eventId: '='
             },
-            templateUrl: 'views/sessionDetail.tmpl.html',
+            templateUrl: 'views/sessions/sessionDetail.tmpl.html',
             controller: 'SessionDetailController'
         }
     });

@@ -65,6 +65,24 @@
                     if(!response.data.success) return $q.reject(response.data.error);
                     return $q.resolve(response.data.exhibitors);
                 });
+            },
+            sponsors: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get sponsors for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/sponsors?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.sponsors);
+                });
+            },
+            recipients: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get recipients for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/recipients?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.recipients);
+                });
             }
         }
     }

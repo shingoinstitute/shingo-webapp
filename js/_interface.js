@@ -88,7 +88,7 @@
                 url: '/events/:id/agenda',
                 controller: 'AgendaController',
                 controllerAs: 'vm',
-                templateUrl: 'views/agenda.html',
+                templateUrl: 'views/agenda/agenda.html',
                 resolve: {
                     agenda: ["Events", "$stateParams", function (Events, $stateParams) {
                         return Events.agenda($stateParams.id)
@@ -104,7 +104,7 @@
                     if ($state.params.session)
                         scrollTo($scope, $timeout, 'sessionList', $state.params.session, 50, 600);
                 },
-                templateUrl: 'views/agendaDay.tmpl.html',
+                templateUrl: 'views/agenda/agendaDay.tmpl.html',
                 resolve: {
                     day: ['Days', '$stateParams', function (Days, $stateParams) {
                         return Days.get($stateParams.day);
@@ -135,7 +135,7 @@
                 url: '/events/:id/sessions',
                 controller: 'SessionsController',
                 controllerAs: 'vm',
-                templateUrl: 'views/sessions.html',
+                templateUrl: 'views/sessions/sessions.html',
                 resolve: {
                     sessions: ["Events", "$stateParams", function (Events, $stateParams) {
                         return Events.sessions($stateParams.id)
@@ -148,7 +148,7 @@
                 url: '/events/:id/speakers',
                 controller: 'SpeakersController',
                 controllerAs: 'vm',
-                templateUrl: 'views/speakers.html'
+                templateUrl: 'views/speakers/speakers.html'
             }
 
             var eventSpeakersTypeState = {
@@ -159,14 +159,13 @@
                     if ($state.params.speaker)
                         scrollTo($scope, $timeout, 'speakerList', $state.params.speaker, 50, 600);
                 },
-                templateUrl: 'views/speakersType.tmpl.html',
+                templateUrl: 'views/speakers/speakersType.tmpl.html',
                 resolve: {
                     speakers: ["Events", "$stateParams", "$q", "_", function (Events, $stateParams, $q, _) {
                         return Events.speakers($stateParams.id)
                             .then(function (speakers) {
                                 var isKeynote = function (obj, comp) {
                                     var is = (obj.Session_Speaker_Associations__r !== null) == comp.Is_Keynote;
-                                    // console.log('is keynote', is);
                                     return is;
                                 }
 
@@ -220,7 +219,7 @@
                     $scope.$emit('toggle filter', true);
                 },
                 controllerAs: 'vm',
-                templateUrl: 'views/exhibitors.html',
+                templateUrl: 'views/exhibitors/exhibitors.html',
                 resolve: {
                     exhibitors: ["Events", "$stateParams", function(Events, $stateParams){
                         return Events.exhibitors($stateParams.id);
@@ -228,6 +227,98 @@
                 }
             }
 
+            var eventSponsorDetailState = {
+                url: '/:sponsor',
+                name: 'sponsors.details',
+                controller: function($scope, sponsor){
+                    $scope.sponsor = sponsor;
+                },
+                template: '<sponsor-detail sponsor="sponsor"></sponsor-detail>',
+                resolve: {
+                    sponsor: ["Sponsors", "$stateParams", function(Sponsors, $stateParams){
+                        return Sponsors.get($stateParams.sponsor);
+                    }]
+                }
+            }
+
+            var eventSponsorsState = {
+                name: 'sponsors',
+                url: '/events/:id/sponsors',
+                controller: function($scope, $state, $timeout, sponsors){
+                    var vm = this;
+                    vm.sponsors = {};
+                    vm.sponsors['President'] = _.filter(sponsors, {'Sponsor_Level__c': 'President'});
+                    vm.sponsors['Champion'] = _.filter(sponsors, {'Sponsor_Level__c': 'Champion'});
+                    vm.sponsors['Benefactor'] = _.filter(sponsors, {'Sponsor_Level__c': 'Benefactor'});
+                    vm.sponsors['Friend'] = _.filter(sponsors, {'Sponsor_Level__c': 'Friend'});
+                    vm.sponsors['Other'] = _.filter(sponsors, {'Sponsor_Level__c': 'Other'});
+
+                    if($state.params.sponsor)
+                        scrollTo($scope, $timeout, 'sponsorList', $state.params.sponsor, 50, 600);
+
+                    $scope.$emit('toggle filter', true);
+                },
+                controllerAs: 'vm',
+                templateUrl: 'views/sponsors/sponsors.html',
+                resolve: {
+                    sponsors: ["Events", "$stateParams", function(Events, $stateParams){
+                        return Events.sponsors($stateParams.id);
+                    }]
+                }
+            }
+
+            var eventRecipientsState = {
+                name: 'recipients',
+                url: '/events/:id/recipients',
+                controller: 'RecipientsController',
+                controllerAs: 'vm',
+                templateUrl: 'view/recipients/recipients.html'
+            }
+
+            var eventRecipientTypeState = {
+                name: 'recipient.type',
+                url: '/:type',
+                controller: function($scope, $state, $timeout, recipients){
+                    $scope.recipients = recipients;
+                    if($state.params.recipient)
+                        scrollTo($scope, $state, 'recipientList', $state.params.recipient, 50, 600);
+                },
+                templateUrl: 'views/recipients/recipientsType.tmpl.html',
+                resolve: {
+                    recipients: ["Events", "$stateParams", "$q", "_", function(Events, $stateParams, $q, _){
+                        return Events.recipients($stateParams.id)
+                        .then(function(recipients){
+                                var types = {
+                                    'prize': 'Shingo Prize',
+                                    'silver': 'Silver Medallion',
+                                    'bronze': 'Bronze Medallion',
+                                    'research': 'Research',
+                                    'publication': 'Publication'
+                                }
+
+                                recipients = _.filter(recipients, {'Award_Type__c': types[$stateParams.type]});
+                                return $q.resolve(recipients);
+                        })
+                    }]
+                }
+            }
+
+            var eventRecipientDetailState = {
+                name: 'recipients.type.details',
+                url: '/:recipient',
+                controller: function($scope, recipient){
+                    $scope.recipient = recipient;
+                },
+                template: '<recipient-detail recipient="recipient"></recipient-detail>',
+                resolve: {
+                    speaker: ["Recipients", "$stateParams", function(Recipients, $stateParams){
+                        return Recipients.get($stateParams.recipient);
+                    }]
+                }
+            }
+
+            $stateProvider.state(eventSponsorDetailState);
+            $stateProvider.state(eventSponsorsState);
             $stateProvider.state(eventExhibitorDetailState);
             $stateProvider.state(eventExhibitorsState);
             $stateProvider.state(eventSpeakerDetailState);
