@@ -11,7 +11,7 @@
             scope: {
                 exhibitor: '='
             },
-            templateUrl: 'views/exhibitorDetail.tmpl.html',
+            templateUrl: 'views/exhibitors/exhibitorDetail.tmpl.html',
             controller: 'ExhibitorDetailController'
         }
     });

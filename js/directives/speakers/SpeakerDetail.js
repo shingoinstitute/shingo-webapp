@@ -11,7 +11,7 @@
             scope: {
                 person: '='
             },
-            templateUrl: 'views/speakerDetail.tmpl.html',
+            templateUrl: 'views/speakers/speakerDetail.tmpl.html',
             controller: 'SpeakerDetailController'
         }
     });
