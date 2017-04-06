@@ -183,3 +183,8 @@ session-detail h4 {
 .price-table > .price-row:nth-child(2n) > span {
     background: rgba(119, 136, 153, 0.23);
 }
+
+img.recipientPhoto {
+    width: 90%;
+    margin: 10px;
+}

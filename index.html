@@ -55,8 +55,13 @@
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <!-- Application Modules -->
-    <script src="/js/__dataLayer.js"></script>
-    <script src="/js/_interface.js"></script>
+    <script src="/js/modules/data/_dataLayer.js"></script>
+    <script src="/js/modules/ui/interface.agenda.js"></script>
+    <script src="/js/modules/ui/interface.exhibitors.js"></script>
+    <script src="/js/modules/ui/interface.recipients.js"></script>
+    <script src="/js/modules/ui/interface.speakers.js"></script>
+    <script src="/js/modules/ui/interface.sponsors.js"></script>
+    <script src="/js/modules/ui/_interface.js"></script>
     <script src="/js/app.js"></script>
 
     <!-- Controllers -->
@@ -68,6 +73,9 @@
     <script src="/js/controllers/NavController.js"></script>
     <script src="/js/controllers/exhibitors/ExhibitorDetailController.js"></script>    
     <script src="/js/controllers/exhibitors/ExhibitorItemController.js"></script>  
+    <script src="/js/controllers/recipients/RecipientDetailController.js"></script>
+    <script src="/js/controllers/recipients/RecipientItemController.js"></script> 
+    <script src="/js/controllers/recipients/RecipientsController.js"></script> 
     <script src="/js/controllers/sessions/SessionDetailController.js"></script>
     <script src="/js/controllers/sessions/SessionItemController.js"></script>
     <!--<script src="/js/controllers/sessions/SessionsController.js"></script>-->
@@ -83,6 +91,8 @@
     <script src="/js/directives/Sidenav.js"></script>
     <script src="/js/directives/exhibitors/ExhibitorDetail.js"></script>
     <script src="/js/directives/exhibitors/ExhibitorItem.js"></script>
+    <script src="/js/directives/recipients/RecipientDetail.js"></script>
+    <script src="/js/directives/recipients/RecipientItem.js"></script>
     <script src="/js/directives/sessions/SessionDetail.js"></script>
     <script src="/js/directives/sessions/SessionItem.js"></script>
     <script src="/js/directives/speakers/SpeakerDetail.js"></script>
@@ -95,6 +105,7 @@
     <script src="/js/services/Days.js"></script>
     <script src="/js/services/Events.js"></script>
     <script src="/js/services/Exhibitors.js"></script>
+    <script src="/js/services/Recipients.js"></script>
     <script src="/js/services/Sessions.js"></script>
     <script src="/js/services/Speakers.js"></script>
     <script src="/js/services/Sponsors.js"></script>

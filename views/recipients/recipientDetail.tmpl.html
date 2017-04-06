@@ -1,0 +1,27 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start start">
+    <div ng-show="recipient.Summary__c">
+        <h1>{{recipient.Award_Type__c}}</h1>
+        <h3>Summary</h3>
+        <hr>
+        <div ng-bind-html="recipient.Summary__c"></div>
+    </div>
+    <div ng-show="!recipient.Summary__c">
+        <h1>Content coming soon!</h1>
+    </div>
+    <span flex="10"><!-- spacer --></span>
+    <div layout="row" layout-fill>
+        <div flex ng-show="recipient.List_of_Photos__c.length">
+            <h3>Photos</h3>
+            <hr>
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="photo in recipient.List_of_Photos__c" layout layout-align="center center">
+                    <img class="recipientPhoto" ng-src="{{photo}}"/>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
+</md-content>
