@@ -1,0 +1,27 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-align="start center"
+    style="background: none; overflow: hidden;"
+    class="roboto">
+    <div layout-padding layout-fill>
+        <md-nav-bar aria-label="Recipient Types" md-selected-nav-item="vm.currentNavItem">
+            <md-nav-item md-nav-click="null" name="prize">
+                Shingo Prize
+            </md-nav-item>
+            <md-nav-item md-nav-click="null" name="silver">
+                Silver Medallion
+            </md-nav-item>
+            <md-nav-item md-nav-click="null" name="bronze">
+                Bronze Medallion
+            </md-nav-item>
+            <md-nav-item md-nav-click="null" name="research">
+                Research
+            </md-nav-item>
+            <md-nav-item md-nav-click="null" name="publication">
+                Publication
+            </md-nav-item>
+        </md-nav-bar>
+        <ui-view flex/>
+    </div>    
+</md-content>

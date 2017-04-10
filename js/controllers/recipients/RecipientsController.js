@@ -13,7 +13,7 @@
        $scope.$on('$stateChangeSuccess', function(ev, toState){
             var path = $location.path().split('recipients/');
             if(path.length == 2) path = path[1].split('/')[0];
-            else path = 'keynote';
+            else path = 'prize';
             
             console.log('path', path);
             vm.currentNavItem = path;
