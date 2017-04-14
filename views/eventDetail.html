@@ -42,7 +42,7 @@
         layout-fill
         layout-padding
         layout-align="center center">
-        <md-card ng-show="vm.event.Shingo_Prices__r" flex md-whiteframe="6" style="padding: 0;">
+        <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="padding: 0;">
             <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
                 <md-card-header-text>
                     Pricing
@@ -60,9 +60,9 @@
                     </div>
             </md-card-content>
         </md-card>
-        <span ng-show="vm.event.Video__c" flex="5"><!-- spacer --></span>
-        <div ng-show="vm.event.Video__c" flex layout layout-align="center center">
-            <iframe width="560" height="315" src="{{vm.event.Video__c}}" frameborder="0" allowfullscreen=""></iframe>
+        <span ng-show="vm.event.Video_Trusted" flex="5"><!-- spacer --></span>
+        <div ng-show="vm.event.Video_Trusted" flex layout layout-align="center center">
+            <iframe width="560" height="315" src="{{vm.event.Video_Trusted}}" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <span flex="5"><!-- spacer --></span>
@@ -80,7 +80,7 @@
             </md-card-header>
             <md-card-content layout-gt-sm="row">
                 <div layout="column" flex>
-                    <h3>Some Keynotes</h3>
+                    <h3>Keynotes Include</h3>
                     <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: vm.event.Id, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})"></speaker-item>
                 </div>
                 <span flex="5"><!-- spacer --></span>

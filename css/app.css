@@ -188,3 +188,46 @@ img.recipientPhoto {
     width: 90%;
     margin: 10px;
 }
+
+.maps {
+    max-height: 200px;
+}
+
+.travelInfoTiles {
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+}
+
+.travelInfoTiles.hasBackground .content {
+    background: rgba(240, 255, 255, 0.43);
+    border-radius: 3px;
+}
+
+.travelInfoTiles md-grid-tile-header > figcaption {
+    width: 100%;
+    text-align: center;
+}
+
+.dark-indigo {
+    background-color: #303F9F;
+}
+
+.indigo {
+    background-color: #3F51B5;
+}
+
+.light-blue {
+    background-color: #0288D1;
+}
+
+.cyan {
+    background-color: #00BCD4;
+}
+
+.blue {
+    background-color: #03A9F4;
+}
+
+.blue-grey {
+    background-color: #607D8B;
+}

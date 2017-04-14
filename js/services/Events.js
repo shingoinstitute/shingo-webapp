@@ -6,6 +6,8 @@
 
     function Events($http, $q){
 
+        var cache = {};
+
         return {
             listUpcoming: function(){
                 return $http.get('http://api.shingo.org/salesforce/events?force_refresh=true')
@@ -24,9 +26,11 @@
             get: function(id){
                 if(!id) return $q.reject(Error("Must pass an id to get an event."));
 
+                if(cache[id]) return $q.resolve(cache[id]);
                 return $http.get('https://api.shingo.org/salesforce/events/' + id + '?force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) return $q.reject(response.data.error);
+                    cache[id] = response.data.event;
                     return $q.resolve(response.data.event);
                 });
             },
@@ -82,6 +86,24 @@
                 .then(function(response){
                     if(!response.data.success) return $q.reject(response.data.error);
                     return $q.resolve(response.data.recipients);
+                });
+            },
+            venues: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get venues for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/venues?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.venues);
+                });
+            },
+            hotels: function(id){
+                if(!id) return $q.reject(Error("Must pass an id to get hotels for an event."));
+
+                return $http.get('https://api.shingo.org/salesforce/events/hotels?event_id=' + id)
+                .then(function(response){
+                    if(!response.data.success) return $q.reject(response.data.error);
+                    return $q.resolve(response.data.hotels);
                 });
             }
         }

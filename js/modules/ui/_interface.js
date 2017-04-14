@@ -24,6 +24,7 @@
             'interface.recipients', // Recipient Routes
             'interface.speakers', // Speaker Routes
             'interface.sponsors', // Sponsor Routes
+            'interface.venues', // Venue Routes
         ])
         .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
 

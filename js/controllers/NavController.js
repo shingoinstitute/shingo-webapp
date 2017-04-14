@@ -9,6 +9,10 @@
         $scope.showDetails = false;
         $scope.logo = "http://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png"
 
+        $scope.isActiveMenuItem = function(ev, item){
+            return ev && ev.App_Menu_Items__c && ev.App_Menu_Items__c.includes(item);
+        }
+
         $scope.toggle = function(navId){
             $mdSidenav(navId)
                 .toggle();

@@ -1,0 +1,31 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-align="start center"
+    style="background: none; overflow: hidden;"
+    class="roboto">
+    <div layout-fill>
+        <div layout="row" layout-fill style="overflow: hidden;">
+            <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4" ng-show="vm.venues.length > 1">
+                <md-list
+                    id="venueList"
+                    style="overflow: auto;">
+                    <md-list-item
+                        id="{{venue.Id}}"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="venues.details({venue: venue.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="venue in vm.venues | orderBy : 'Name' | filter : mc.filter"
+                        aria-label="Go to venue {{venue.Name}}">
+                        <venue-item venue="venue" flex></venue-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
+            </div>
+            <div flex layout-padding class="raleway">
+                <ui-view/>
+            </div>
+        </div>
+    </div>
+</md-content>

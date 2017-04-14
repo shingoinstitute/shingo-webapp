@@ -3,7 +3,7 @@
     layout-fill
     class="md-sidenav-left roboto"
     md-component-id="sidenav"
-    md-is-locked-open="$mdMedia('gt-lg')">
+    md-is-locked-open="$mdMedia('gt-md')">
 
     <a
         href="https://shingo.org"
@@ -21,16 +21,17 @@
     <md-divider></md-divider>
     <span flex="5"><!-- spacer --></span>
     <md-content layout-padding>
-        <div ng-show="showDetails" class="raleway">
+        <div ng-show="ev.App_Menu_Items__c" class="raleway">
             <b>Event Details</b>
-            <a ui-sref="event({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Summary</a>
-            <a ui-sref="agenda({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Agenda</a>
-            <!--<a ui-sref="sessions({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sessions</a>-->
-            <a ui-sref="speakers({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Speakers</a>
-            <a ui-sref="exhibitors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Exhibitors</a>
-            <a ui-sref="recipients({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Recipients</a>
-            <a ui-sref="sponsors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sponsors</a>
-            <a ui-sref="attendees({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Attendees</a>
+            <a ng-show="isActiveMenuItem(ev,'Summary')" ui-sref="event({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Summary</a>
+            <a ng-show="isActiveMenuItem(ev,'Agenda')" ui-sref="agenda({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Agenda</a>
+            <a ng-show="isActiveMenuItem(ev,'Sessions')" ui-sref="sessions({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sessions</a>
+            <a ng-show="isActiveMenuItem(ev,'Speakers')" ui-sref="speakers({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Speakers</a>
+            <a ng-show="isActiveMenuItem(ev,'Exhibitors')" ui-sref="exhibitors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Exhibitors</a>
+            <a ng-show="isActiveMenuItem(ev,'Recipients')" ui-sref="recipients({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Recipients</a>
+            <a ng-show="isActiveMenuItem(ev,'Sponsors')" ui-sref="sponsors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sponsors</a>
+            <a ng-show="isActiveMenuItem(ev,'Venues')" ui-sref="venues({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Travel</a>
+            <a ng-show="isActiveMenuItem(ev,'Attendees')" ui-sref="attendees({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Attendees</a>
             <md-divider></md-divider>
         </div>
         <a ui-sref="{{state.name}}" ng-repeat="state in states" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">

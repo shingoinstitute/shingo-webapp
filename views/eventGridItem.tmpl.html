@@ -22,14 +22,14 @@
     <div ng-show="isLarge" layout="column" layout-padding layout-align="center center" class="raleway">
         <h2 hide show-gt-sm style="text-align: center;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMMM d' }} - {{event.End_Date__c | date : 'MMMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h2>
         <h4 hide-gt-sm style="text-align: center;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h4>
-        <div layout-gt-sm="row" layout-fill layout-align="center center">
-            <div hide show-gt-sm flex layout="column" layout-align="center center" style="text-align: justify;">
+        <div layout-gt-md="row" layout-fill layout-align="center center">
+            <div hide show-gt-sm flex="60" layout="column" layout-align="center center" style="text-align: left;">
                 <!-- Under Dom's recommendations we are going to forego the list and use the sales text -->
                 <!--<h3>Some Keynotes</h3>
                 <speaker-item layout-fill person="speaker" ng-repeat="speaker in highlightList"></speaker-item>-->
                 <div ng-bind-html="event.Sales_Text__c"></div>
             </div>
-            <div flex layout-gt-sm="column" layout-fill layout-align="center center">
+            <div show-gt-md flex layout-gt-sm="column" layout-fill layout-align="center center">
                 <md-button
                     class="md-primary md-raised"
                     ng-href="#/events/{{event.Id}}"
@@ -53,5 +53,6 @@
         background-color="{{event.Primary_Color__c}}"
         background-watch="event">
         <h3>Type: {{event.Event_Type__c}}</h3>
+        <span flex><!-- spacer --></span>
     </md-grid-tile-footer>
 </div>

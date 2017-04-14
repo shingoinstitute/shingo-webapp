@@ -1,0 +1,50 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start center">
+    <div layout-fill layout="column">
+        <div flex layout="column" layout-align="start center">
+            <h1>{{venue.Name}}</h1>
+            <h2 class="raleway">{{venue.Address__c}}</h2>
+            <iframe
+                ng-show="venue.Google_Map_Trusted"
+                style="width: 100%;"
+                flex
+                class="maps"
+                frameborder="0"
+                border="0"
+                src="{{venue.Google_Map_Trusted}}"
+                allowfullscreen></iframe>
+        </div>
+        <span flex="10"><!-- spacer --></span>
+        <div flex layout layout-align="start start">
+            <md-grid-list
+                style="width: 100%"
+                md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+                md-row-height-gt-md="4:3" md-row-height="4:3"
+                md-gutter="8px" md-gutter-gt-sm="4px" >
+
+                <md-grid-tile ng-repeat="info in travel"
+                            md-rowspan="{{info.row}}"
+                            md-colspan="2"
+                            md-colspan-sm="1"
+                            md-colspan-xs="1"
+                            class="travelInfoTiles"
+                            layout-align="start center" >
+                    <md-grid-tile-header ng-class="info.background">
+                        <h3 style="text-transform: uppercase">{{info.Title__c}}</h3>
+                    </md-grid-tile-header>
+                    <div 
+                        layout="column"
+                        layout-padding
+                        class="content roboto"
+                        layout-align="start center">
+                        <span ng-bind-html="info.Content__c"></span>
+                    </div>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </div>
+    <span flex="10"><!-- spacer --></span>
+</md-content>
