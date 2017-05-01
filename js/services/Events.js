@@ -10,14 +10,14 @@
 
         return {
             listUpcoming: function(){
-                return $http.get('https://api.shingo.org/salesforce/events?force_refresh=true')
+                return $http.get('https://api.shingo.org/salesforce/events?publish_to_web=true&force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) throw response.data.error;
                     var events = new Array();
                     var now = new Date();
                     now.setDate(now.getDate() - 1);
                     response.data.events.forEach(function(ev){
-                        if(new Date(ev.Start_Date__c) >= now || ev.Publish_to_Web_App__c)
+                        if(new Date(ev.Start_Date__c) >= now)
                             events.push(ev);
                     });
                     return $q.resolve(events);
