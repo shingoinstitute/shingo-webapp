@@ -1,0 +1,31 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start start">
+    <div ng-show="person.Speaker_Biography__c">
+        <h3>Biography</h3>
+        <hr>
+        <div ng-bind-html="person.Speaker_Biography__c"></div>
+        <br>
+        <div ng-show="person.Organization__r.Name">
+            <h3>Company</h3>
+            <h4>{{person.Organization__r.Name}}</h4>
+        </div>
+    </div>
+    <div ng-show="!person.Speaker_Biography__c">
+        <h1>Content coming soon!</h1>
+    </div>
+    <span flex="10"><!-- spacer --></span>
+    <!--<div layout="row" layout-fill>
+        <div flex ng-show="person.Session_Speaker_Associations__r">
+            <h3>Sessions</h3>
+            <hr>
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="session in person.Session_Speaker_Associations__r.records">
+                    <h3 class="raleway">{{session.Session__r.Session_Display_Name__c}}</h3>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>-->
+</md-content>

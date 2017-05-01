@@ -1,0 +1,16 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start start">
+    <div ng-show="sponsor.Organization__r.App_Abstract__c">
+        <h1>{{sponsor.Sponsor_Level__c}}</h1>
+        <h3>Summary</h3>
+        <hr>
+        <div ng-bind-html="sponsor.Organization__r.App_Abstract__c"></div>
+    </div>
+    <div ng-show="!sponsor.Organization__r.App_Abstract__c">
+        <h1>Content coming soon!</h1>
+    </div>
+    <span flex="10"><!-- spacer --></span>
+</md-content>

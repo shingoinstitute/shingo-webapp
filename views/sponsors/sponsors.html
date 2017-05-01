@@ -1,0 +1,85 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-align="start center"
+    style="background: none; overflow: hidden;"
+    class="roboto">
+    <div layout-fill>
+        <div layout="row" layout-fill style="overflow: hidden;">
+            <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
+                <md-list
+                    id="sponsorList"
+                    style="overflow: auto;">
+                    <md-subheader ng-show="vm.sponsors['President'].length" class="md-primary">Presidents</md-subheader>
+                    <md-list-item
+                        id="{{sponsor.Id}}"
+                        ng-show="vm.sponsors['President'].length"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="sponsor in vm.sponsors['President'] | orderBy : 'Organization__r.Name' | filter : mc.filter"
+                        aria-label="Go to sponsor {{sponsor.Name}}">
+                        <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                    <md-subheader ng-show="vm.sponsors['Champion'].length" class="md-primary">Champions</md-subheader>
+                    <md-list-item
+                        id="{{sponsor.Id}}"
+                        ng-show="vm.sponsors['Champion'].length"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="sponsor in vm.sponsors['Champion'] | orderBy : 'Organization__r.Name' | filter : mc.filter"
+                        aria-label="Go to sponsor {{sponsor.Name}}">
+                        <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                    <md-subheader ng-show="vm.sponsors['Benefactor'].length" class="md-primary">Benefactors</md-subheader>
+                    <md-list-item
+                        id="{{sponsor.Id}}"
+                        ng-show="vm.sponsors['Benefactor'].length"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="sponsor in vm.sponsors['Benefactor'] | orderBy : 'Organization__r.Name' | filter : mc.filter"
+                        aria-label="Go to sponsor {{sponsor.Name}}">
+                        <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                    <md-subheader ng-show="vm.sponsors['Friend'].length" class="md-primary">Friends</md-subheader>
+                    <md-list-item
+                        id="{{sponsor.Id}}"
+                         ng-show="vm.sponsors['Friend'].length"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="sponsor in vm.sponsors['Friend'] | orderBy : 'Organization__r.Name' | filter : mc.filter"
+                        aria-label="Go to sponsor {{sponsor.Name}}">
+                        <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                    <md-subheader ng-show="vm.sponsors['Other'].length" class="md-primary">Other</md-subheader>
+                    <md-list-item
+                        id="{{sponsor.Id}}"
+                         ng-show="vm.sponsors['Other'].length"
+                        class="md-2-line session-item-cont"
+                        md-colors="{'border-color': 'warn'}"
+                        ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                        ui-sref-active="active"
+                        ng-repeat="sponsor in vm.sponsors['Other'] | orderBy : 'Organization__r.Name' | filter : mc.filter"
+                        aria-label="Go to sponsor {{sponsor.Name}}">
+                        <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
+            </div>
+            <div flex layout-padding class="raleway">
+                <ui-view/>
+            </div>
+        </div>
+    </div>
+</md-content>

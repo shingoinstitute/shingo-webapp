@@ -8,7 +8,7 @@
                 scope: {
                     person: '='
                 },
-                templateUrl: 'views/speakerItem.tmpl.html',
+                templateUrl: 'views/speakers/speakerItem.tmpl.html',
                 controller: 'SpeakerItemController'
             }
         });

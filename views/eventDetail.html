@@ -13,10 +13,10 @@
         background-height="300px"
         background-color="{{vm.event.Primary_Color__c"
         background-watch="vm.event"
-        class="detail-banner">
+        class="detail-banner raleway-large">
         <div class="detail-text">
             <h2>{{vm.event.Name}}</h2>
-            <h1>{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
+            <h1 class="roboto">{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
             <h3>{{vm.event.Display_Location__c}}</h3>
         </div>
     </div>
@@ -27,7 +27,7 @@
         layout-padding
         layout-align="center center">
         <div flex layout layout-align="center center">
-            <img style="width: 50%" ng-src="{{vm.event.Logo_Large__c || 'http://res.cloudinary.com/shingo/image/upload/v1386708394/Shingo_Logo_cxhekf.png'}}" />
+            <img style="width: 50%" ng-src="{{vm.event.Logo_Large__c || 'https://res.cloudinary.com/shingo/image/upload/v1386708394/Shingo_Logo_cxhekf.png'}}" />
         </div>
         <span ng-show="vm.event.Sales_Text__c" flex="5"><!-- spacer --></span>
         <div ng-show="vm.event.Sales_Text__c" flex class="raleway">
@@ -42,27 +42,27 @@
         layout-fill
         layout-padding
         layout-align="center center">
-        <md-card ng-show="vm.event.Shingo_Prices__r" flex md-whiteframe="6" style="padding: 0;">
+        <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="padding: 0;">
             <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
                 <md-card-header-text>
                     Pricing
                 </md-card-header-text>
             </md-card-header>
             <md-card-content layout="column" layout-align="center center">
-                    <div flex class="price-table" cellpadding="0">
+                    <div flex class="price-table" layout-fill>
                         <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
                             <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}}</span>
                         </div>
                     </div>
                     <span ng-show="vm.event.Registration_Link__c" flex="10"><!-- spacer --></span>
-                    <div ng-show="vm.event.Registration_Link__c" layout layout-fill>
-                        <md-button flex class="md-raised md-primary" ng-href="vm.event.Registration_Link__c" target="_blank">Register</md-button>
+                    <div ng-show="vm.event.Registration_Link__c" layout layout-fill layout-align="center center">
+                        <md-button class="md-raised md-primary" ng-href="vm.event.Registration_Link__c" target="_blank">Register</md-button>
                     </div>
             </md-card-content>
         </md-card>
-        <span ng-show="vm.event.Video__c" flex="5"><!-- spacer --></span>
-        <div ng-show="vm.event.Video__c" flex layout layout-align="center center">
-            <iframe width="560" height="315" src="{{vm.event.Video__c}}" frameborder="0" allowfullscreen=""></iframe>
+        <span ng-show="vm.event.Video_Trusted" flex="5"><!-- spacer --></span>
+        <div ng-show="vm.event.Video_Trusted" flex layout layout-align="center center">
+            <iframe width="560" height="315" src="{{vm.event.Video_Trusted}}" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     <span flex="5"><!-- spacer --></span>
@@ -80,8 +80,8 @@
             </md-card-header>
             <md-card-content layout-gt-sm="row">
                 <div layout="column" flex>
-                    <h3>Some Keynotes</h3>
-                    <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers"></speaker-item>
+                    <h3>Keynotes Include</h3>
+                    <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: vm.event.Id, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})"></speaker-item>
                 </div>
                 <span flex="5"><!-- spacer --></span>
                 <div flex layout="column">

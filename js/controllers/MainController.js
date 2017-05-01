@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('interface')
-    .controller('MainController', ['$scope', '$rootScope', '$mdSidenav', MainController]);
+    .controller('MainController', ['$scope', '$rootScope', '$mdSidenav', 'Sessions', MainController]);
 
-    function MainController($scope, $rootScope, $mdSidenav){
+    function MainController($scope, $rootScope, $mdSidenav, Sessions){
         var vm = this;
 
         vm.showLoading = true;
@@ -13,12 +13,20 @@
             $mdSidenav(id).toggle();
         }
 
+        $scope.isKeynote = function(obj){
+            return obj.Session_Speaker_Associations__r !== null;
+        }
+
+        $rootScope.$on('toggle filter', function(ev, state){
+            vm.showFilter = state;
+        });
+
         $rootScope.$on('$stateChangeStart', function(){
             console.log("Showing loading")
             vm.showLoading = true;
         });
 
-        $rootScope.$on('$stateChangeSuccess', function(){
+        $rootScope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState, fromParams){
             console.log("Hiding loading")
             vm.showLoading = false;
         });

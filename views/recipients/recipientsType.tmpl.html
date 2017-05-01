@@ -1,0 +1,26 @@
+<div layout-fill>
+    <div layout="row" layout-fill style="overflow: hidden;">
+        <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
+            <md-list
+                id="recipientList"
+                style="overflow: auto;">
+                <md-list-item
+                    id="{{recipient.Id}}" 
+                    class="md-2-line session-item-cont"
+                    md-colors="{'border-color': 'warn'}"
+                    ui-sref="recipients.type.details({recipient: recipient.Id})"
+                    ui-sref-active="active"
+                    aria-label="Go to recipient {{recipient.Organization__r.Name}}"
+                    ng-repeat="recipient in recipients | orderBy : 'Organization__r.Name' | filter : mc.filter">
+                    <recipient-item recipient="recipient"></recipient-item>
+                    <md-divider></md-divider>
+                </md-list-item>
+                <md-list-item>&nbsp;</md-list-item>
+                <md-list-item>&nbsp;</md-list-item>
+            </md-list>
+        </div>
+        <div flex layout-padding class="raleway">
+            <ui-view/>
+        </div>
+    </div>
+</div>

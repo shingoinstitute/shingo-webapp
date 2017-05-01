@@ -1,0 +1,26 @@
+<md-content
+    layout="column"
+    layout-fill
+    layout-padding
+    layout-align="start start">
+    <div ng-show="session.Summary__c">
+        <h3>Summary</h3>
+        <hr>
+        <div ng-bind-html="session.Summary__c"></div>
+    </div>
+    <div ng-show="!session.Summary__c && session.Session_Type__c !== 'Meal' && session.Session_Type__c !== 'Other'">
+        <h1>Content coming soon!</h1>
+    </div>
+    <div layout ng-show="session.Room__r">
+        <h4>Room:</h4>&nbsp;{{session.Room__r.Name}}
+    </div>
+    <span flex="10"><!-- spacer --></span>
+    <div layout="row" layout-fill>
+        <div flex ng-show="session.Speakers.length">
+            <h3>Speakers</h3>
+            <hr>
+            <speaker-item person="speaker" ng-repeat="speaker in session.Speakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: eventId, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})" aria-label="Go to speaker {{speaker.Name}}"></speaker-item>
+        </div>
+    </div>
+    <!--<pre>{{session | json}}</pre>-->
+</md-content>

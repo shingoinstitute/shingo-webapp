@@ -21,6 +21,10 @@ md-sidenav img {
     margin: 10px auto;
 }
 
+md-sidenav a.home {
+    text-align: center;
+}
+
 body {
     height: 100vh;
     overflow: hidden;
@@ -38,6 +42,10 @@ event-grid-item .md-button {
 .smallEventDetail h4 {
     margin: 0;
     margin-bottom: 5px;
+}
+
+event-grid-item h2 {
+    margin: 0;
 }
 
 ui-view md-grid-list {
@@ -61,17 +69,56 @@ ui-view md-grid-list {
     position: relative;
 }
 
+.nav-item.details {
+    padding-left: 5%;
+}
+
 .nav-item.active {
-    border-right: 10px solid;
-    border-radius: 3px;
+    border-right: 5px solid transparent;
+    background: rgba(177, 124, 49, .2);
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+md-input-container.filter {
+    margin: 0;
+    height: 0;
+}
+
+md-input-container.filter > label {
+    color: #f1f1f1;
+}
+
+md-input-container.filter > input {
+    color: #f1f1f1;
+    border-color: #f1f1f1;
 }
 
 .roboto {
     font-family: 'Roboto', sans-serif;
 }
 
+.roboto-large {
+    font-family: 'Roboto', sans-serif;
+    font-size: 150%;
+}
+
 .raleway {
     font-family: 'Raleway', sans-serif;
+}
+
+.raleway-small {
+    font-family: 'Raleway', sans-serif;
+    font-size: 80%;
+}
+
+.raleway-large {
+    font-family: 'Raleway', sans-serif;
+    font-size: 150%;
+}
+
+.no-pad {
+    padding: 0 !important;
 }
 
 .detail-banner {
@@ -86,11 +133,34 @@ ui-view md-grid-list {
     border-radius: 5px;
 }
 
-/*.price-table > tbody > .price-row {
-    display: table-row-group;
-    vertical-align: top;
-    text-align: left;    
-}*/
+md-tabs[md-border-bottom]:not(.md-dynamic-height) md-tabs-content-wrapper {
+    top: 55px;
+}
+
+.session-item-cont.active {
+    border-right: 4px solid transparent;
+    background: rgba(177, 124, 49, .2);
+}
+
+.session-item h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.session-item h4 {
+    margin: 0;
+    padding: 0;
+}
+
+ui-view {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+session-detail h4 {
+    margin: 0;
+    padding: 0;
+}
 
 .price-row > span {
     display: table-cell;
@@ -112,4 +182,52 @@ ui-view md-grid-list {
 
 .price-table > .price-row:nth-child(2n) > span {
     background: rgba(119, 136, 153, 0.23);
+}
+
+img.recipientPhoto {
+    width: 90%;
+    margin: 10px;
+}
+
+.maps {
+    max-height: 200px;
+}
+
+.travelInfoTiles {
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+}
+
+.travelInfoTiles.hasBackground .content {
+    background: rgba(240, 255, 255, 0.43);
+    border-radius: 3px;
+}
+
+.travelInfoTiles md-grid-tile-header > figcaption {
+    width: 100%;
+    text-align: center;
+}
+
+.dark-indigo {
+    background-color: #303F9F;
+}
+
+.indigo {
+    background-color: #3F51B5;
+}
+
+.light-blue {
+    background-color: #0288D1;
+}
+
+.cyan {
+    background-color: #00BCD4;
+}
+
+.blue {
+    background-color: #03A9F4;
+}
+
+.blue-grey {
+    background-color: #607D8B;
 }
