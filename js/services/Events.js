@@ -10,7 +10,7 @@
 
         return {
             listUpcoming: function(){
-                return $http.get('http://api.shingo.org/salesforce/events?force_refresh=true')
+                return $http.get('https://api.shingo.org/salesforce/events?force_refresh=true')
                 .then(function(response){
                     if(!response.data.success) throw response.data.error;
                     var events = new Array();

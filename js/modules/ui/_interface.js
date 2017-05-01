@@ -121,7 +121,7 @@
 
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 if (toState.name == 'eventList') {
-                    $rootScope.$broadcast('change logo', 'http://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png')
+                    $rootScope.$broadcast('change logo', 'https://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png')
                     $rootScope.$broadcast('toggle details', {
                         state: false,
                         event: {}
