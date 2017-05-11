@@ -1,5 +1,5 @@
-<div layout="row" layout-fill style="overflow: hidden;">
-    <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33" md-whiteframe="4">
+<div layout="row" layout-fill>
+    <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33">
         <md-list
             id="sessionList"
             style="overflow: auto;">
@@ -17,7 +17,7 @@
         </md-list>
     </div>
     <div hide show-gt-sm flex="66" style="min-width: 66.66%; overflow: auto;" layout-padding class="raleway">
-        <ui-view/>
+        <div ui-view/>
     </div>
     <div hide-gt-sm flex="100" ng-show="$state.params.session" class="mobile-detail-container">
         <div class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
@@ -30,7 +30,7 @@
                     </md-button>
                 </div>
             </md-toolbar>
-            <ui-view style="height: 100%;"/>
+            <div ui-view style="height: 100%;"/>
         </div>
     </div>
 </div>

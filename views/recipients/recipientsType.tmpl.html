@@ -1,6 +1,6 @@
 <div layout-fill>
     <div layout="row" layout-fill style="overflow: hidden;">
-        <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33" md-whiteframe="4">
+        <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33">
             <md-list
                 id="recipientList"
                 style="overflow: auto;">
@@ -15,12 +15,10 @@
                     <recipient-item recipient="recipient"></recipient-item>
                     <md-divider></md-divider>
                 </md-list-item>
-                <md-list-item>&nbsp;</md-list-item>
-                <md-list-item>&nbsp;</md-list-item>
             </md-list>
         </div>
         <div hide show-gt-sm flex="66" style="min-width: 66.66%; overflow: auto;" layout-padding class="raleway">
-            <ui-view/>
+            <div ui-view/>
         </div>
         <div flex="100" hide-gt-sm ng-show="$state.params.recipient" class="mobile-detail-container">
             <div class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
@@ -33,7 +31,7 @@
                         </md-button>
                     </div>
                 </md-toolbar>
-                <ui-view style="height: 90%;" md-swipe-right|left="null" />
+                <div ui-view style="height: 90%;" md-swipe-right|left="null" />
             </div>
         </div>
     </div>

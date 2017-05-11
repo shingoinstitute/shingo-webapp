@@ -25,13 +25,16 @@ md-sidenav a.home {
     text-align: center;
 }
 
-body {
-    height: 100vh;
-    overflow: hidden;
-}
-
 event-grid-item .md-button {
     width: 90%;
+}
+
+.img-list-item {
+    padding: 5px 0;
+}
+
+.img-list-item > img{
+    margin-right: 20px;
 }
 
 .smallEventDetail {
@@ -233,35 +236,16 @@ img.recipientPhoto {
     background-color: #607D8B;
 }
 
-.mobile-detail {
-    min-width: 70%;
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 1;
-    position: relative;
-    box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 13px 19px 2px rgba(0,0,0,.14), 0 5px 24px 4px rgba(0,0,0,.12);
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    background-color: rgb(255,255,255);
-    color: rgba(0,0,0,0.87);
-}
-
 .mobile-detail-container {
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     z-index: 80;
-    overflow: hidden;
+    color: rgba(0,0,0,0.87);
+    background-color: rgb(255,255,255);
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1432px){
@@ -288,4 +272,30 @@ _::-webkit-full-page-media, _:future, :root .price-row > span {
 
 _::-webkit-full-page-media, _:future, :root .layout-align-center-center {
     text-align: center;
+}
+
+@supports (-ms-ime-align:auto) {
+    .price-table {
+        width: 100%;
+    }
+    
+    .price-row {
+        width: 100%;
+    }
+
+    .price-row > span:first-child {
+        width: 80%;
+    }
+
+    .price-row > span:last-child {
+        width: 20%;
+    }
+
+    /*.price-table > .price-row:last-child > span {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .price-table > .price-row:nth-child(2n) > span {
+        background: red;
+    }*/
 }

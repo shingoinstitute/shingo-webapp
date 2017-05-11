@@ -1,4 +1,4 @@
-<md-content
+<div
     layout="column"
     layout-align="start center"
     style="background: none;"
@@ -49,13 +49,13 @@
                 </md-card-header-text>
             </md-card-header>
             <md-card-content layout="column" layout-align="center center">
-                    <div flex class="price-table" layout-fill>
+                    <div flex class="price-table">
                         <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
                             <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}} USD</span>
                         </div>
                     </div>
                     <span ng-show="vm.event.Registration_Link__c" flex="10"><!-- spacer --></span>
-                    <div ng-show="vm.event.Registration_Link__c" layout layout-fill layout-align="center center">
+                    <div ng-show="vm.event.Registration_Link__c" layout layout-align="center center">
                         <md-button class="md-raised md-primary" ng-href="vm.event.Registration_Link__c" target="_blank">Register</md-button>
                     </div>
             </md-card-content>
@@ -91,4 +91,4 @@
             </md-card-content>
         </md-card>
     </div>
-</md-content>
+</div>

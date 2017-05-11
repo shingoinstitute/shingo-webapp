@@ -1,9 +1,8 @@
-<md-content
+<div
+    class="roboto"
     layout="column"
     layout-fill
     layout-align="start center"
-    style="background: none; overflow: hidden;"
-    class="roboto"
     md-swipe-left="vm.onSwipeLeft()"
     md-swipe-right="vm.onSwipeRight()">
     <div layout-padding layout-fill>
@@ -15,6 +14,6 @@
                 Concurrent
             </md-tab>
         </md-tabs>
-        <ui-view flex/>
+        <div ui-view flex/>
     </div>    
-</md-content>
+</div>

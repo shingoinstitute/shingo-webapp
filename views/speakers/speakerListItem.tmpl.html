@@ -1,11 +1,11 @@
 <div
+    class="img-list-item"
     layout="row"
     layout-fill
     layout-align="start center">
     <img ng-src="{{photoURL}}" />
-    <span flex="5"><!-- spacer --></span>
-    <div layout="column" class="raleway column">
+    <div flex layout="column" class="raleway column">
         <span class="roboto" style="font-size: 18pt">{{person.Name}}</span>
-        <span style="font-weight: lighter">{{person.Speaker_Title__c}}</span>
+        <span style="font-weight: lighter; line-height: 1em;">{{person.Speaker_Title__c}}</span>
     </div>
 </div>

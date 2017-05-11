@@ -18,8 +18,8 @@
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body ng-app="core">
-    <div layout="row" layout-fill ng-controller="MainController as mc">
-        <sidenav md-whiteframe="10"></sidenav>
+    <div layout="row" style="min-height: 100%;" ng-controller="MainController as mc">
+        <sidenav style="display: block;" md-whiteframe="10"></sidenav>
         <div flex layout="column" layout-fill>
             <md-toolbar layout class="md-primary" style="display: flex;" md-whiteframe="3">
                 <md-button hide-gt-md ng-click="mc.toggle('sidenav')">
@@ -34,10 +34,13 @@
                 <span flex="5"></span>
             </md-toolbar>
             <!-- Begin Frame content -->
-            <div flex layout-fill style="overflow-y: auto;">
-                <md-progress-linear ng-show="mc.showLoading" class="md-warn" md-mode="indeterminate" style="position: absolute;"></md-progress-linear>
-                <ui-view layout-fill flex></ui-view>
-            </div>
+            <md-progress-linear
+                ng-show="mc.showLoading"
+                class="md-warn"
+                md-mode="indeterminate"
+                style="position: absolute;">
+            </md-progress-linear>
+            <div ui-view layout-fill flex></div>
             <!-- End Frame content -->
         </div>
     </div>
