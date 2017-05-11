@@ -1,12 +1,8 @@
-<md-content
-    layout="column"
-    layout-fill
-    layout-align="start center"
-    style="background: none; overflow: hidden;"
+<div
     class="roboto"
     md-swipe-left="vm.onSwipeLeft()"
     md-swipe-right="vm.onSwipeRight()">
-    <div layout-padding layout-fill>
+    <div layout="column" layout-fill>
         <md-tabs
         aria-label="Agenda Days"
         md-selected="vm.currentNavItem"
@@ -15,6 +11,6 @@
                 {{day.Display_Name__c}}
             </md-tab>
         </md-tabs>
-        <ui-view flex/>
+        <ui-view></ui-view>
     </div>
-</md-content>
+</div>

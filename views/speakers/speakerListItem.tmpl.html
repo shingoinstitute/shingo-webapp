@@ -1,11 +1,22 @@
-<div
-    layout="row"
-    layout-fill
-    layout-align="start center">
+
+<style>
+    p.list-item {
+        line-height: 2em;
+        margin: 0;
+        padding-left: 4px;
+        overflow: visible;
+    }
+
+    div.list-item {
+        padding: 1%;
+    }
+
+</style>
+
+<div layout="row">
     <img ng-src="{{photoURL}}" />
-    <span flex="5"><!-- spacer --></span>
     <div layout="column" class="raleway column">
-        <span class="roboto" style="font-size: 18pt">{{person.Name}}</span>
-        <span style="font-weight: lighter">{{person.Speaker_Title__c}}</span>
+        <p class="roboto list-item" style="font-size: 18pt">{{person.Name}}</p>
+        <p class="list-item" style="font-weight: lighter">{{person.Speaker_Title__c}}</p>
     </div>
 </div>

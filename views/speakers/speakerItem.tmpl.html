@@ -1,13 +1,9 @@
 <md-card md-whiteframe="6" class="pointer">
-    <div
-        layout="row"
-        layout-fill
-        layout-align="start center">
+    <div layout="row" layout-margin>
             <img ng-src="{{photoURL}}" />
-            <span flex="5"><!-- spacer --></span>
-            <div layout="column" class="raleway column">
-                <span class="roboto" style="font-size: 18pt">{{person.Name}}</span>
-                <span style="font-weight: lighter">{{person.Speaker_Title__c}}</span>
+            <div layout="column" class="raleway column" layout-margin>
+                <span class="roboto" style="font-size: 18pt;">{{person.Name}}</span>
+                <span style="font-weight: lighter;">{{person.Speaker_Title__c}}</span>
             </div>
         </div>
 </md-card>

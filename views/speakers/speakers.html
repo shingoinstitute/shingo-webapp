@@ -1,12 +1,10 @@
-<md-content
+<div
     layout="column"
-    layout-fill
     layout-align="start center"
-    style="background: none; overflow: hidden;"
     class="roboto"
     md-swipe-left="vm.onSwipeLeft()"
     md-swipe-right="vm.onSwipeRight()">
-    <div layout-padding layout-fill>
+    <div layout-padding>
         <md-tabs aria-label="Speaker Types" md-selected="vm.currentNavItem" md-stretch-tabs="never">
             <md-tab md-nav-click="null" name="keynote">
                 Keynote
@@ -17,4 +15,4 @@
         </md-tabs>
         <ui-view flex/>
     </div>    
-</md-content>
+</div>

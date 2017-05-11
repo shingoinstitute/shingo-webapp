@@ -27,7 +27,6 @@ md-sidenav a.home {
 
 body {
     height: 100vh;
-    overflow: hidden;
 }
 
 event-grid-item .md-button {
