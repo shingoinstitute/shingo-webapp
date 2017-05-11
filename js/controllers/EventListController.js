@@ -36,7 +36,7 @@
 
         vm.getRows = function(event){
             if(vm.isLarge(event)){
-                return 9;
+                return 10;
             } else {
                 return 3;
             }

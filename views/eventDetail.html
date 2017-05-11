@@ -14,11 +14,11 @@
         background-color="{{vm.event.Primary_Color__c"
         background-watch="vm.event"
         class="detail-banner raleway-large">
-        <div class="detail-text">
+        <!--<div class="detail-text">
             <h2>{{vm.event.Name}}</h2>
             <h1 class="roboto">{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
             <h3>{{vm.event.Display_Location__c}}</h3>
-        </div>
+        </div>-->
     </div>
     <span flex="5"><!-- spacer --></span>
     <!-- Logo and Sales Text (gt-sm row else col) -->
@@ -31,8 +31,8 @@
         </div>
         <span ng-show="vm.event.Sales_Text__c" flex="5"><!-- spacer --></span>
         <div ng-show="vm.event.Sales_Text__c" flex class="raleway">
-            <span><h3>About the {{vm.event.Name}}</h3></span>
-            <span ng-bind-html="vm.event.Sales_Text__c" style="text-align: justify;"></span>
+            <span><h2>About the {{vm.event.Name}}</h2></span>
+            <span ng-bind-html="vm.event.Sales_Text__c"></span>
         </div>
     </div>
     <span flex="5"><!-- spacer --></span>
@@ -51,7 +51,7 @@
             <md-card-content layout="column" layout-align="center center">
                     <div flex class="price-table" layout-fill>
                         <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
-                            <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}}</span>
+                            <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}} USD</span>
                         </div>
                     </div>
                     <span ng-show="vm.event.Registration_Link__c" flex="10"><!-- spacer --></span>
@@ -71,7 +71,8 @@
         layout
         layout-padding
         style="width: 100%"
-        layout-align="center center">
+        layout-align="center center"
+        ng-show="vm.higlightSpeakers || vm.highlights">
         <md-card flex md-whiteframe="6" style="padding: 0;">
             <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
                 <md-card-header-text>
@@ -79,13 +80,12 @@
                 </md-card-header-text>
             </md-card-header>
             <md-card-content layout-gt-sm="row">
-                <div layout="column" flex>
-                    <h3>Keynotes Include</h3>
+                <div layout="column" flex ng-show="vm.highlightSpeakers">
+                    <h3>Speakers Include:</h3>
                     <speaker-item person="speaker" ng-repeat="speaker in vm.highlightSpeakers" ui-sref="speakers.type.details({speaker: speaker.Id, id: vm.event.Id, type: (isKeynote(speaker) ? 'keynote' : 'concurrent')})"></speaker-item>
                 </div>
                 <span flex="5"><!-- spacer --></span>
-                <div flex layout="column">
-                    <h3>Some other Highlight</h3>
+                <div flex layout="column" ng-show="vm.highlights">
                     <span ng-bind-html="vm.event.Sales_Text__c"></span>
                 </div>
             </md-card-content>

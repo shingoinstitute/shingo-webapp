@@ -8,6 +8,7 @@
         var vm = this;
 
         vm.showLoading = true;
+        vm.filter;
 
         vm.toggle = function(id){
             $mdSidenav(id).toggle();
@@ -22,12 +23,14 @@
         });
 
         $rootScope.$on('$stateChangeStart', function(){
-            console.log("Showing loading")
+            console.log("Showing loading");
+            $mdSidenav('sidenav').close();
             vm.showLoading = true;
         });
 
         $rootScope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState, fromParams){
             console.log("Hiding loading")
+            vm.filter = angular.noop();
             vm.showLoading = false;
         });
 

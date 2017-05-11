@@ -55,13 +55,26 @@
 
             var eventListState = {
                 name: 'eventList',
-                url: '/events',
+                url: '/upcoming',
                 controller: 'EventListController',
                 controllerAs: 'vm',
                 templateUrl: 'views/eventList.html',
                 resolve: {
                     events: ["Events", function (Events) {
                         return Events.listUpcoming();
+                    }]
+                }
+            }
+
+            var pastEventListState = {
+                name: 'pastEventList',
+                url: '/past',
+                controller: 'EventListController',
+                controllerAs: 'vm',
+                templateUrl: 'views/eventList.html',
+                resolve: {
+                    events: ["Events", function (Events) {
+                        return Events.listPast();
                     }]
                 }
             }
@@ -79,24 +92,28 @@
                     highlightSpeakers: ["Events", "$stateParams", "$q", function (Events, $stateParams, $q) {
                         return Events.speakers($stateParams.id)
                             .then(function (speakers) {
-                                var isKeynote = function (obj, comp) {
+                                var isHighlight = function (obj, comp) {
                                     var is = (obj.Session_Speaker_Associations__r !== null) == comp.Is_Keynote;
                                     return is;
                                 }
 
-                                var random = _.differenceWith(speakers, [{
-                                    "Is_Keynote": false
-                                }], isKeynote);
-                                return $q.resolve(_.sampleSize(random, 5));
+                                var highlightSpeakers = _.differenceWith(speakers, [{
+                                    "Is_Highlight": false
+                                }], isHighlight);
+                                return $q.resolve(_.sampleSize(highlightSpeakers, 5));
                             });
+                    }],
+                    highlights: ["Events", "$stateParams", "$q", function(Events, $stateParams, $q){
+                        return $q.resolve([]);
                     }]
                 }
             }
 
             $stateProvider.state(eventDetailState);
+            $stateProvider.state(pastEventListState);
             $stateProvider.state(eventListState);
 
-            $urlRouterProvider.otherwise('/events');
+            $urlRouterProvider.otherwise('/upcoming');
         });
 
     // Add state to $rootScope
@@ -108,10 +125,10 @@
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 console.error("$stateChangeError");
                 console.error("ERROR: ", error);
-                console.debug("toState", toState);
-                console.debug("toParams", toParams);
-                console.debug("fromState", fromState);
-                console.debug("fromParams", fromParams);
+                console.log("toState", toState);
+                console.log("toParams", toParams);
+                console.log("fromState", fromState);
+                console.log("fromParams", fromParams);
             });
 
             $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
@@ -120,7 +137,7 @@
             })
 
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-                if (toState.name == 'eventList') {
+                if (toState.name == 'eventList' || toState.name == 'pastEventList') {
                     $rootScope.$broadcast('change logo', 'https://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png')
                     $rootScope.$broadcast('toggle details', {
                         state: false,

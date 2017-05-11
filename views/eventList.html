@@ -4,7 +4,7 @@
     layout-fill
     layout-padding>
     <md-grid-list
-        md-cols="6" md-cols-md="12" md-cols-gt-md="24"
+        md-cols="6" md-cols-lg="12" md-cols-gt-lg="24"
         md-row-height="20px"
         md-row-height-gt-xs="50px"
         md-gutter="15px"
@@ -12,12 +12,14 @@
         <md-grid-tile 
             class="md-whiteframe-6dp"
             ng-class="{pointer: !vm.isLarge(ev)}"
-            md-rowspan="{{vm.getRows(ev) + 3}}"
-            md-colspan="6"
-            md-rowspan-sm="{{vm.getRows(ev)}}"
-            md-colspan-sm="{{vm.getCols(ev)}}"
+            md-rowspan="{{vm.getRows(ev) + (!vm.isLarge(ev) ? 3 : 0)}}"
+            md-colspan="{{vm.getCols(ev)}}"
+            md-rowspan-sm="{{6 - (!vm.isLarge(ev) ? 3 : 0)}}"
+            md-colspan-sm="6"
             md-rowspan-gt-sm="{{vm.getRows(ev)}}"
-            md-colspan-gt-sm="{{vm.getCols(ev) * 2}}"
+            md-colspan-gt-sm="{{vm.getCols(ev)}}"
+            md-rowspan-gt-lg="{{vm.getRows(ev)}}"
+            md-colspan-gt-lg="{{vm.getCols(ev) * 2}}"
             ng-repeat="ev in vm.events"
             ng-click="vm.go(ev)">
             <event-grid-item

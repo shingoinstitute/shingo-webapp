@@ -4,6 +4,9 @@
     layout-align="start center"
     style="background: none; overflow: hidden;"
     class="roboto">
+    <md-toolbar class="md-warn" layout="row" layout-align="center center">
+        <p><a class="md-primary" ng-click="vm.sponsorship()">Click here</a>&nbsp;to view opportunities to become a sponsor.</p>
+    </md-toolbar>
     <div layout-fill>
         <div layout="row" layout-fill style="overflow: hidden;">
             <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
@@ -77,8 +80,22 @@
                     </md-list-item>
                 </md-list>
             </div>
-            <div flex layout-padding class="raleway">
+            <div hide show-gt-sm flex layout-padding class="raleway">
                 <ui-view/>
+            </div>
+            <div hide-gt-sm ng-show="$state.params.sponsor" class="mobile-detail-container">
+                <div flex class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
+                    <md-toolbar class="md-accent">
+                        <div class="md-toolbar-tools">
+                            <h2>Sponsor Details</h2>
+                            <span flex><!-- spacer --></span>
+                            <md-button class="md-icon-button" ui-sref="sponsors({id: ev.Id})">
+                                <md-icon md-icon-font="close" aria-label="Close dialog">close</md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+                    <ui-view style="height: 90%;" />
+                </div>
             </div>
         </div>
     </div>

@@ -4,7 +4,6 @@
     class="md-sidenav-left roboto"
     md-component-id="sidenav"
     md-is-locked-open="$mdMedia('gt-md')">
-
     <a
         href="https://shingo.org"
         class="home">
@@ -30,8 +29,8 @@
             <a ng-show="isActiveMenuItem(ev,'Exhibitors')" ui-sref="exhibitors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Exhibitors</a>
             <a ng-show="isActiveMenuItem(ev,'Recipients')" ui-sref="recipients({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Recipients</a>
             <a ng-show="isActiveMenuItem(ev,'Sponsors')" ui-sref="sponsors({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Sponsors</a>
-            <a ng-show="isActiveMenuItem(ev,'Venues')" ui-sref="venues({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Travel</a>
-            <a ng-show="isActiveMenuItem(ev,'Attendees')" ui-sref="attendees({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Attendees</a>
+            <a ng-show="isActiveMenuItem(ev,'Travel')" ui-sref="venues({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Travel</a>
+            <!--<a ng-show="isActiveMenuItem(ev,'Attendees')" ui-sref="attendees({id: ev.Id})" ui-sref-active="active" class="md-primary nav-item details" md-colors="{'border-color': 'warn', color: 'grey-900'}">Attendees</a>-->
             <md-divider></md-divider>
         </div>
         <a ui-sref="{{state.name}}" ng-repeat="state in states" ui-sref-active="active" class="md-primary nav-item" md-colors="{'border-color': 'warn', color: 'grey-900'}">

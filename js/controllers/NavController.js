@@ -5,7 +5,7 @@
     .controller('NavController', ['$scope', '$state', '$mdSidenav', NavController]);
 
     function NavController($scope, $state, $mdSidenav){
-        $scope.states = [{'name': 'eventList', 'title': 'Upcoming Events'}];
+        $scope.states = [{'name': 'eventList', 'title': 'Upcoming Events'}, {'name': 'pastEventList', 'title': 'Past Events'}];
         $scope.showDetails = false;
         $scope.logo = "https://res.cloudinary.com/shingo/image/upload/v1474478583/WebContent/Huntsman-Shingo-Logo.png"
 

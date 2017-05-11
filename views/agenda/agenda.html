@@ -3,13 +3,18 @@
     layout-fill
     layout-align="start center"
     style="background: none; overflow: hidden;"
-    class="roboto">
+    class="roboto"
+    md-swipe-left="vm.onSwipeLeft()"
+    md-swipe-right="vm.onSwipeRight()">
     <div layout-padding layout-fill>
-        <md-nav-bar aria-label="Agenda Days" md-selected-nav-item="vm.currentNavItem">
-            <md-nav-item md-nav-click="null" ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" name="{{day.Id}}">
+        <md-tabs
+        aria-label="Agenda Days"
+        md-selected="vm.currentNavItem"
+        md-stretch-tabs="never">
+            <md-tab md-nav-click="null" ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" name="{{day.Id}}">
                 {{day.Display_Name__c}}
-            </md-nav-item>
-        </md-nav-bar>
+            </md-tab>
+        </md-tabs>
         <ui-view flex/>
     </div>
 </md-content>

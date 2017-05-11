@@ -4,13 +4,18 @@
     layout-padding
     layout-align="start center">
     <div layout-fill layout="column">
-        <div flex layout="column" layout-align="start center">
-            <h1>{{venue.Name}}</h1>
-            <h2 class="raleway">{{venue.Address__c}}</h2>
+        <div layout="column" layout-align="start center">
+            <div hide show-gt-sm>
+                <h1>{{venue.Name}}</h1>
+                <h2 class="raleway">{{venue.Address__c}}</h2>
+            </div>
+            <div hide-gt-sm>
+                <b>{{venue.Name}}</b>
+                <p class="raleway">{{venue.Address__c}}</p>
+            </div>
             <iframe
                 ng-show="venue.Google_Map_Trusted"
                 style="width: 100%;"
-                flex
                 class="maps"
                 frameborder="0"
                 border="0"
@@ -18,16 +23,19 @@
                 allowfullscreen></iframe>
         </div>
         <span flex="5"><!-- spacer --></span>
-        <div flex layout layout-align="start start">
+        <div layout flex>
             <md-grid-list
-                style="width: 100%"
-                md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
-                md-row-height-gt-md="4:3" md-row-height="4:3"
+                style="width: 100%;"
+                md-cols="1" md-cols-md="2" md-cols-lg="6" md-cols-gt-lg="6"
+                md-row-height="150px"
+                md-row-height-xs="250px"
+                md-row-height-lg="200px"
                 md-gutter="8px" md-gutter-gt-sm="4px" >
 
-                <md-grid-tile ng-repeat="info in travel"
-                            md-rowspan="{{info.row}}"
-                            md-colspan="2"
+                <md-grid-tile ng-repeat="info in travel | orderBy: 'Order__c'"
+                            md-rowspan="{{info.Row__c || 2}}"
+                            md-colspan="{{info.Column__c || 2}}"
+                            md-colspan-md="1"
                             md-colspan-sm="1"
                             md-colspan-xs="1"
                             class="travelInfoTiles"
@@ -38,9 +46,10 @@
                     <div 
                         layout="column"
                         layout-padding
+                        layout-fill
                         class="content roboto"
-                        layout-align="start center">
-                        <span ng-bind-html="info.Content__c"></span>
+                        layout-align="center center">
+                        <span class="grid-text" ng-bind-html="info.Content__c"></span>
                     </div>
                 </md-grid-tile>
             </md-grid-list>

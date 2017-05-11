@@ -19,8 +19,22 @@
                 <md-list-item>&nbsp;</md-list-item>
             </md-list>
         </div>
-        <div flex layout-padding class="raleway">
+        <div hide show-gt-sm flex layout-padding class="raleway">
             <ui-view/>
+        </div>
+        <div hide-gt-sm ng-show="$state.params.recipient" class="mobile-detail-container">
+            <div flex class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
+                <md-toolbar class="md-accent">
+                    <div class="md-toolbar-tools">
+                        <h2>Recipient Details</h2>
+                        <span flex><!-- spacer --></span>
+                        <md-button class="md-icon-button" ui-sref="recipients({id: ev.Id})">
+                            <md-icon md-icon-font="close" aria-label="Close dialog">close</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <ui-view style="height: 90%;" md-swipe-right|left="null" />
+            </div>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
 
     function RecipientDetailController($scope){
         var vm = this;
-        if($scope.recipient.List_of_Photos__c)
+        if($scope.recipient.List_of_Photos__c && !($scope.recipient.List_of_Photos__c instanceof Array))
             $scope.recipient.List_of_Photos__c = $scope.recipient.List_of_Photos__c.split(',');
     };
 

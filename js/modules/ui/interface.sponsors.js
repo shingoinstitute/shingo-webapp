@@ -39,7 +39,7 @@
             var eventSponsorsState = {
                 name: 'sponsors',
                 url: '/events/:id/sponsors',
-                controller: function($scope, $state, $timeout, sponsors){
+                controller: function($scope, $state, $timeout, $mdDialog, sponsors, sponsorshipInfo){
                     var vm = this;
                     vm.sponsors = {};
                     vm.sponsors['President'] = _.filter(sponsors, {'Sponsor_Level__c': 'President'});
@@ -47,6 +47,39 @@
                     vm.sponsors['Benefactor'] = _.filter(sponsors, {'Sponsor_Level__c': 'Benefactor'});
                     vm.sponsors['Friend'] = _.filter(sponsors, {'Sponsor_Level__c': 'Friend'});
                     vm.sponsors['Other'] = _.filter(sponsors, {'Sponsor_Level__c': 'Other'});
+
+                    console.log("sponsor info: ", sponsorshipInfo)
+
+                    vm.sponsorship = function(){
+                        $mdDialog.show({
+                            parent: angular.element(document.body),
+                            targetEvent: null,
+                            template: 
+                            '<md-dialog flex flex-gt-sm="40" aria-label="Sponsorship Information">'+
+                            '   <md-toolbar class="md-warn">'+
+                            '       <div class="md-toolbar-tools">'+
+                            '           <h2>Sponsorship Information</h2>'+
+                            '       </div>'+
+                            '   </md-toolbar>'+
+                            '   <md-dialog-content layout-padding>'+
+                            '       <span ng-show="data" ng-bind-html="data"></span>'+
+                            '       <span ng-show="!data"><p>For more information please email <a href="mailto:mary.price@usu.edu">mary.price@usu.edu</a></p></span>'+
+                            '   </md-dialog-content>'+
+                            '   <md-dialog-actions>'+
+                            '       <md-button ng-click="closeDialog()" class="md-raised md-primary">Close</md-button>'+
+                            '   </md-dialog-actions>'+
+                            '</md-dialog>',
+                            locals: {
+                                data: sponsorshipInfo
+                            },
+                            controller: function($scope, $mdDialog, data){
+                                $scope.data = data;
+                                $scope.closeDialog = function(){
+                                    $mdDialog.hide();
+                                }
+                            }
+                        });
+                    }
 
                     if($state.params.sponsor)
                         scrollTo($scope, $timeout, 'sponsorList', $state.params.sponsor, 50, 600);
@@ -58,6 +91,12 @@
                 resolve: {
                     sponsors: ["Events", "$stateParams", function(Events, $stateParams){
                         return Events.sponsors($stateParams.id);
+                    }],
+                    sponsorshipInfo: ["Events", "$stateParams", function(Events, $stateParams){
+                        return Events.get($stateParams.id)
+                        .then(function(event){
+                            return event.Sponsorship_Information__c;
+                        });
                     }]
                 }
             }

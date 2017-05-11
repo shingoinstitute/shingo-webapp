@@ -22,13 +22,22 @@
             else path = vm.agenda[0].Id;
             
             console.log('path', path);
-            vm.currentNavItem = path;
-            if(toState.url == '/events/:id/agenda') $state.go('agenda.day', {day: vm.currentNavItem});
+            vm.currentNavItem = _.findIndex(vm.agenda,['Id', path]);
+            if(toState.url == '/events/:id/agenda') $state.go('agenda.day', {day: vm.agenda[vm.currentNavItem].Id});
         })
         
         $scope.$watch('vm.currentNavItem', function(newVal, oldVal){
-            if(newVal != oldVal) $state.go('agenda.day', {day: newVal});
+            if(newVal != oldVal) $state.go('agenda.day', {day: vm.agenda[newVal].Id});
         });
+
+        vm.onSwipeRight = function(){
+            vm.currentNavItem = vm.currentNavItem - 1;
+            if(vm.currentNavItem === -1) vm.currentNavItem = vm.agenda.length - 1;
+        }
+
+        vm.onSwipeLeft = function(){
+            vm.currentNavItem = (vm.currentNavItem + 1) % vm.agenda.length;
+        }
 
         $scope.$emit('toggle filter', true);
     };
