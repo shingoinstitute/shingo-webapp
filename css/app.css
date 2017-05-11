@@ -270,12 +270,22 @@ img.recipientPhoto {
     }
 }
 
-.layout-row.layout-wrap > * {
-  flex: 1 1 0;
+_::-webkit-full-page-media, _:future, :root md-card, .layout-column, .layout-row {
+    display: -webkit-box; 
 }
 
-@media only screen and (max-width: 600px) {
-    .layout-row.layout-wrap > * {
-        flex: 1 1 100%;
-    }
+_::-webkit-full-page-media, _:future, :root .column.layout-column {
+    display: -webkit-flex;
+}
+
+_::-webkit-full-page-media, _:future, :root .column.layout-row {
+    display: -webkit-flex;
+}
+
+_::-webkit-full-page-media, _:future, :root .price-row > span {
+    display: -webkit-box;
+}
+
+_::-webkit-full-page-media, _:future, :root .layout-align-center-center {
+    text-align: center;
 }

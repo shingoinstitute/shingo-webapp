@@ -9,7 +9,7 @@
     </md-toolbar>
     <div layout-fill>
         <div layout="row" layout-fill style="overflow: hidden;">
-            <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4">
+            <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33" md-whiteframe="4">
                 <md-list
                     id="exhibitorList"
                     style="overflow: auto;">
@@ -26,11 +26,11 @@
                     </md-list-item>
                 </md-list>
             </div>
-            <div hide show-gt-sm flex layout-padding class="raleway">
+            <div hide show-gt-sm flex="66" style="min-width: 66.66%; overflow: auto;" layout-padding class="raleway">
                 <ui-view/>
             </div>
-            <div hide-gt-sm ng-show="$state.params.exhibitor" class="mobile-detail-container">
-                <div flex class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
+            <div flex="100" hide-gt-sm ng-show="$state.params.exhibitor" class="mobile-detail-container">
+                <div class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
                     <md-toolbar class="md-accent">
                         <div class="md-toolbar-tools">
                             <h2>Exhibitor Details</h2>

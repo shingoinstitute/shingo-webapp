@@ -1,6 +1,6 @@
 <div layout-fill class="roboto">
     <div
-        class="imgContainer"
+        class="imgContainer column"
         layout="column"
         md-colors="{background: 'accent'}"
         background-img="{{event.Banner_URL__c}}"
@@ -19,14 +19,14 @@
             </div>
         </span>
     </div>
-    <div ng-show="isLarge" layout="column" layout-padding layout-align="center center" class="raleway">
+    <div ng-show="isLarge" layout="column" layout-padding layout-align="center center" class="raleway column">
         <h2 hide show-gt-lg style="text-align: center;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMMM d' }} - {{event.End_Date__c | date : 'MMMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h2>
         <h4 hide-gt-lg style="text-align: center; margin: 5px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h4>
         <div layout-gt-lg="row" layout-fill layout-align="center center">
             <div hide show-gt-sm flex-gt-lg="60" layout="column" layout-align="center center" style="text-align: left;">
                 <div class="grid-text" ng-bind-html="event.Sales_Text__c"></div>
             </div>
-            <div flex layout="row" layout-gt-lg="column" layout-fill layout-align="center center">
+            <div flex layout="row" layout-gt-lg="column" class="column" layout-fill layout-align="center center">
                 <md-button
                     class="md-primary md-raised"
                     ng-href="#/events/{{event.Id}}"

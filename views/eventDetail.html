@@ -30,7 +30,7 @@
             <img style="width: 50%" ng-src="{{vm.event.Logo_Large__c || 'https://res.cloudinary.com/shingo/image/upload/v1386708394/Shingo_Logo_cxhekf.png'}}" />
         </div>
         <span ng-show="vm.event.Sales_Text__c" flex="5"><!-- spacer --></span>
-        <div ng-show="vm.event.Sales_Text__c" flex class="raleway">
+        <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex class="raleway">
             <span><h2>About the {{vm.event.Name}}</h2></span>
             <span ng-bind-html="vm.event.Sales_Text__c"></span>
         </div>

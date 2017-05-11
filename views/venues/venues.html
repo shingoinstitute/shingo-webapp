@@ -6,7 +6,7 @@
     class="roboto">
     <div layout-fill>
         <div layout="row" layout-fill style="overflow: hidden;">
-            <div layout="column" layout-fill flex-gt-sm="30" md-whiteframe="4" ng-show="vm.venues.length > 1">
+            <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="30" md-whiteframe="4" ng-show="vm.venues.length > 1">
                 <md-list
                     id="venueList"
                     style="overflow: auto;">
@@ -23,7 +23,7 @@
                     </md-list-item>
                 </md-list>
             </div>
-            <div flex layout-padding class="raleway">
+            <div flex layout-padding class="raleway" style="overflow: auto;">
                 <ui-view/>
             </div>
         </div>
