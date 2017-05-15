@@ -55,6 +55,11 @@ ui-view md-grid-list {
     max-width: 1558px;
 }
 
+.layout-row > md-list.list {
+    overflow: auto;
+    max-height: calc(100vh - 175px);
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -140,7 +145,12 @@ md-tabs[md-border-bottom]:not(.md-dynamic-height) md-tabs-content-wrapper {
     top: 55px;
 }
 
-.session-item-cont.active {
+.list-item-detail {
+    min-width: 66.66%;
+    overflow: auto;
+}
+
+.list-item-container.active {
     border-right: 4px solid transparent;
     background: rgba(177, 124, 49, .2);
 }

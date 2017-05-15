@@ -1,25 +1,29 @@
 <div layout="row" layout-fill>
-    <div layout="column" style="overflow: auto;" layout-fill flex-gt-sm="33">
-        <md-list
-            id="sessionList"
-            style="overflow: auto;">
-            <md-list-item
-                id="{{session.Id}}"
-                class="md-2-line session-item-cont"
-                md-colors="{'border-color': 'warn'}"
-                ui-sref="agenda.day.session({session: session.Id})"
-                ui-sref-active="active"
-                aria-label="Go to Session {{session.Session_Display_Name__r}}"
-                ng-repeat="session in day.Shingo_Sessions__r.records | orderBy : 'Start_Date_Time__c' | filter : mc.filter">
-                <session-item session="session"></session-item>
-                <md-divider></md-divider>
-            </md-list-item>
-        </md-list>
+    <md-list
+        id="sessionList"
+        flex-gt-sm="33"
+        class="list">
+        <md-list-item
+            id="{{session.Id}}"
+            class="md-2-line list-item-container"
+            md-colors="{'border-color': 'warn'}"
+            ui-sref="agenda.day.session({session: session.Id})"
+            ui-sref-active="active"
+            aria-label="Go to Session {{session.Session_Display_Name__r}}"
+            ng-repeat="session in day.Shingo_Sessions__r.records | orderBy : 'Start_Date_Time__c' | filter : mc.filter">
+            <session-item session="session"></session-item>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
+    <div
+        hide
+        show-gt-sm
+        flex="66"
+        class="list-item-detail raleway"
+        layout-padding>
+        <div ui-view />
     </div>
-    <div hide show-gt-sm flex="66" style="min-width: 66.66%; overflow: auto;" layout-padding class="raleway">
-        <div ui-view/>
-    </div>
-    <div hide-gt-sm flex="100" ng-show="$state.params.session" class="mobile-detail-container">
+    <div hide-gt-sm ng-show="$state.params.session" layout="column" class="mobile-detail-container">
         <div class="mobile-detail _md md-dialog-fullscreen md-transition-in" role="dialog" layout="column" layout-fill class="raleway">
             <md-toolbar class="md-accent">
                 <div class="md-toolbar-tools">
@@ -30,7 +34,7 @@
                     </md-button>
                 </div>
             </md-toolbar>
-            <div ui-view style="height: 100%;"/>
+            <div ui-view md-swipe-right|left="null" />
         </div>
     </div>
 </div>
