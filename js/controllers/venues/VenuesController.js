@@ -11,7 +11,7 @@
         var vm = this;
         
         vm.venues = venues;
-        if(vm.venues.length === 1)
+        if(vm.venues && vm.venues.length === 1)
             $state.go('venues.details', {venue: vm.venues[0].Id});
 
 
