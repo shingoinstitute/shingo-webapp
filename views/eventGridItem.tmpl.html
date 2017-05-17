@@ -24,7 +24,7 @@
     </div>
     <h3 hide show-gt-lg style="text-align: center; margin: 0px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMMM d' }} - {{event.End_Date__c | date : 'MMMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h3>
     <h4 hide-gt-lg style="text-align: center; margin: 5px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h4>
-    <div layout-gt-lg="row" layout-align="center center">
+    <div layout-gt-lg="row" layout-fill layout-align="center center">
         <div hide show-gt-sm flex-gt-lg="60" layout="column" layout-align="center center" style="text-align: left;">
             <div class="grid-text" ng-bind-html="event.Sales_Text__c"></div>
         </div>

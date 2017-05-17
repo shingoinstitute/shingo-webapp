@@ -2,13 +2,12 @@
     layout="column"
     layout-fill
     layout-align="start center"
-    class="roboto"
-    md-swipe-left="vm.onSwipeLeft()"
-    md-swipe-right="vm.onSwipeRight()">
+    class="roboto">
     <div layout-padding layout-fill>
         <md-tabs
             aria-label="Agenda Days"
             md-selected="vm.currentNavItem"
+            md-swipe-content="true"
             md-stretch-tabs="never">
             <md-tab md-nav-click="null" ng-repeat="day in vm.agenda | orderBy: 'Agenda_Date__c'" name="{{day.Id}}">
                 {{day.Display_Name__c}}

@@ -6,7 +6,7 @@
     <md-toolbar class="md-warn" layout="row" layout-align="center center">
         <p><a class="md-primary" ng-click="vm.exhibitorship()">Click here</a>&nbsp;to view opportunities to become an exhibitor.</p>
     </md-toolbar>
-    <div layout="row" layout-fill style="overflow: hidden;">
+    <div layout="row" layout-fill>
         <md-list
             id="exhibitorList"
             flex-gt-sm="33"
@@ -44,7 +44,7 @@
                     </md-button>
                 </div>
             </md-toolbar>
-            <div ui-view md-swipe-right|left="null" />
+            <div ui-view />
         </div>
     </div>
 </div>

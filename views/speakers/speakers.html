@@ -2,13 +2,12 @@
     class="roboto"
     layout="column"
     layout-fill
-    layout-align="start center"
-    md-swipe-left="vm.onSwipeLeft()"
-    md-swipe-right="vm.onSwipeRight()">
+    layout-align="start center">
     <div layout-padding layout-fill>
         <md-tabs
             aria-label="Speaker Types"
             md-selected="vm.currentNavItem"
+            md-swipe-content="true"
             md-stretch-tabs="never">
             <md-tab md-nav-click="null" name="keynote">
                 Keynote
