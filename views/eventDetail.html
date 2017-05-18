@@ -26,12 +26,12 @@
         layout-gt-sm="row"
         layout-padding
         layout-align="center center">
-        <div flex layout layout-align="center center">
-            <img style="width: 50%" ng-src="{{vm.event.Logo_Large__c || 'https://res.cloudinary.com/shingo/image/upload/v1386708394/Shingo_Logo_cxhekf.png'}}" />
+        <div ng-show="vm.event.Logo_Large__c" flex layout layout-align="center center">
+            <img style="width: 50%" ng-src="{{vm.event.Logo_Large__c}}" />
         </div>
         <span ng-show="vm.event.Sales_Text__c" flex="5"><!-- spacer --></span>
         <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex class="raleway">
-            <span><h2>About the {{vm.event.Name}}</h2></span>
+            <span><h2>{{vm.event.Name}}</h2></span>
             <span ng-bind-html="vm.event.Sales_Text__c"></span>
         </div>
     </div>
@@ -43,7 +43,7 @@
         layout-padding
         layout-align="center center">
         <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="padding: 0;">
-            <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+            <md-card-header md-colors="{background: 'primary'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
                 <md-card-header-text>
                     Pricing
                 </md-card-header-text>
