@@ -20,7 +20,7 @@
                 vm.minEventDate = start;
         });
 
-        vm.events = _.sortBy(vm.events, ['Start_Date__c, End_Date__c']);
+        vm.events = _.sortBy(vm.events, (o) => { return new Date(o.Start_Date__c) });
 
         vm.minStudyDate = undefined;
         vm.studyTours.forEach(function(e){
@@ -29,7 +29,7 @@
                 vm.minStudyDate = start;
         });
 
-        vm.studyTours = _.sortBy(vm.studyTours, ['Start_Date__c, End_Date__c']);
+        vm.studyTours = _.sortBy(vm.studyTours,  (o) => { return new Date(o.Start_Date__c)});
         
 
         vm.events = _.concat(vm.events, vm.studyTours);
@@ -49,7 +49,7 @@
         }
 
         vm.isLarge = function(event){
-            return event.Event_Type__c.includes("Conference") && event.Event_Type__c.includes("Conference") && new Date(event.Start_Date__c) <= vm.minEventDate;
+            return event.Event_Type__c.includes("Conference") && new Date(event.Start_Date__c) <= vm.minEventDate;
         }
 
         vm.go = function(event){
