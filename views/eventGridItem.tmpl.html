@@ -7,7 +7,7 @@
     background-height="{{isLarge ? '200px' : '100%'}}"
     background-watch="event"
     layout-align="center center">
-    <span ng-class="{'eventName': event.Banner_URL__c != undefined}" class="md-accent">
+    <div ng-class="{'eventName': event.Banner_URL__c != undefined}" class="md-accent">
         <div hide-gt-lg ng-show="isLarge">
             <h2>{{event.Name}}</h2>
         </div>
@@ -16,7 +16,7 @@
             <b>{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</b>
             <h4>Click to Learn More</h4>
         </div>
-    </span>
+    </div>
 </div>
 <div ng-show="isLarge" layout="column" layout-padding layout-align="center center" class="raleway column">
     <div hide show-gt-lg ng-show="isLarge">
@@ -24,7 +24,7 @@
     </div>
     <h3 hide show-gt-lg style="text-align: center; margin: 0px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMMM d' }} - {{event.End_Date__c | date : 'MMMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h3>
     <h4 hide-gt-lg style="text-align: center; margin: 5px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h4>
-    <div layout-gt-lg="row" layout-fill layout-align="center center">
+    <div layout-gt-lg="row" layout-align="center center" style="width: 100%;">
         <div hide show-gt-sm flex-gt-lg="60" layout="column" layout-align="center center" style="text-align: left;">
             <div class="grid-text" ng-bind-html="event.Sales_Text__c"></div>
         </div>

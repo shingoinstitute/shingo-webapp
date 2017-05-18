@@ -22,15 +22,15 @@
             vm.showFilter = state;
         });
 
-        $rootScope.$on('$stateChangeStart', function(){
-            console.log("Showing loading");
-            $mdSidenav('sidenav').close();
+        $rootScope.$on('$stateChangeStart', function(){            
             vm.showLoading = true;
         });
 
         $rootScope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState, fromParams){
             console.log("Hiding loading")
             vm.filter = angular.noop();
+            console.log("Showing loading");
+            $mdSidenav('sidenav').close();
             vm.showLoading = false;
         });
 

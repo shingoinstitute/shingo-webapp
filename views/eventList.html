@@ -14,7 +14,7 @@
             md-rowspan="{{6 - (!vm.isLarge(ev) ? 3 : 0)}}"
             md-colspan="6"
             md-rowspan-gt-sm="{{vm.getRows(ev)}}"
-            md-colspan-gt-sm="{{vm.getCols(ev)}}"
+            md-colspan-gt-sm="{{vm.getCols(ev, true)}}"
             md-rowspan-gt-lg="{{vm.getRows(ev)}}"
             md-colspan-gt-lg="{{vm.getCols(ev) * 2}}"
             ng-repeat="ev in vm.events"

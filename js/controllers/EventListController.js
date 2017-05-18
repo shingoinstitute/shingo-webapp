@@ -42,9 +42,9 @@
             }
         }
 
-        vm.getCols = function(event){
+        vm.getCols = function(event, isMd = false){
             if(event.Event_Type__c.includes("Study Tour"))
-                return 3;
+                return 3 + (isMd ? 3 : 0);
             return 6;
         }
 
