@@ -1,7 +1,8 @@
 <div
     layout="column"
-    layout-fill
+    class="detail-pane"
     layout-padding
+    style="height: calc(100vh - 100px);"
     layout-align="start center">
     <div layout-fill layout="column">
         <div layout="column" layout-align="start center">
@@ -39,7 +40,7 @@
                             md-colspan-sm="1"
                             md-colspan-xs="1"
                             class="travelInfoTiles"
-                            layout-align="start center" >
+                            layout-align="center center" >
                     <md-grid-tile-header class="blue-grey">
                         <h3 style="text-transform: uppercase">{{info.Title__c}}</h3>
                     </md-grid-tile-header>
@@ -48,7 +49,8 @@
                         layout-padding
                         layout-fill
                         class="content roboto"
-                        layout-align="center center">
+                        layout-align="start center"
+                        style="margin-top: 75px">
                         <span class="grid-text" ng-bind-html="info.Content__c"></span>
                     </div>
                 </md-grid-tile>

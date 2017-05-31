@@ -251,11 +251,25 @@ img.recipientPhoto {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    overflow: auto;
+    height: 100vh;
+    overflow: hidden;
     z-index: 80;
     color: rgba(0,0,0,0.87);
     background-color: rgb(255,255,255);
+}
+
+.detail-pane {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+@media only screen and (max-width: 960px){
+    .detail-pane {
+        height: calc(100vh - 80px);
+    }
 }
 
 @media only screen and (max-width: 339px){

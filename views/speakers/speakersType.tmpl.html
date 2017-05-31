@@ -10,7 +10,7 @@
             ui-sref="speakers.type.details({speaker: speaker.Id})"
             ui-sref-active="active"
             aria-label="Go to speaker {{speaker.Name}}"
-            ng-repeat="speaker in speakers | orderBy : 'Name' | filter : mc.filter">
+            ng-repeat="speaker in speakers | filter : mc.filter">
             <speaker-list-item person="speaker"></speaker-list-item>
             <md-divider></md-divider>
         </md-list-item>

@@ -51,6 +51,7 @@
                                 speakers = _.differenceWith(speakers, [{
                                     "Is_Keynote": !($stateParams.type == 'keynote')
                                 }], isKeynote);
+                                speakers = _.sortBy(speakers, ['Contact__r.LastName', 'Name']);
                                 return $q.resolve(speakers);
                             });
                     }]
