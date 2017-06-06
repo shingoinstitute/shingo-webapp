@@ -304,6 +304,34 @@ _::-webkit-full-page-media, _:future, :root .layout-align-center-center {
     text-align: center;
 }
 
+.ie-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(211, 211, 211, 0.92);
+    width: 100%;
+    height: 100vh;
+    z-index: 9999999;
+}
+
+.ie-message {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 250px);
+    width: 500px;
+    background: white;
+    padding: 50px;
+    box-shadow: 3px 3px 3px darkgrey;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+     .ie-container {
+        display: block;
+     }
+}
+
 @supports (-ms-ime-align:auto) {
     .price-table {
         width: 100%;
