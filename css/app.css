@@ -42,6 +42,21 @@ event-grid-item .md-button {
     text-align: center;
 }
 
+.contact-us {
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 125px);
+    font-size: 90%;
+}
+
+.contact-us img {
+    width: inherit;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .smallEventDetail h4 {
     margin: 0;
     margin-bottom: 5px;

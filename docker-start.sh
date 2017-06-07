@@ -20,6 +20,6 @@ docker build -t shingo-events:${TAG} .
 docker run -itd                                             \
     --volume $(pwd):/shingo-webapp                          \
     --name shingo-events                                    \
-    --network="shingo-net"                                  \
+    --network="shingo-dev-net"                                  \
     --publish ${HTTP}:80                                    \
     shingo-events:${TAG}
