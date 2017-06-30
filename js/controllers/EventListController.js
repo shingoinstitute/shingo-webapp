@@ -53,7 +53,7 @@
         }
 
         vm.go = function(event){
-            if(!vm.isLarge(event)) $state.go('event', {id: event.Id});
+            $state.go('event', {id: event.Id});
         }
 
         $scope.$emit('toggle filter', false);

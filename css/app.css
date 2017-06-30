@@ -42,11 +42,18 @@ event-grid-item .md-button {
     text-align: center;
 }
 
+.link-button {
+    font-size: 125%;
+    text-decoration: none;
+    color: rgb(177, 124, 49);
+    font-weight: 600;
+}
+
 .contact-us {
-    position: absolute;
-    bottom: 20px;
-    left: calc(50% - 125px);
+    position: relative;
+    margin-top: 5%;
     font-size: 90%;
+    margin-bottom: 5%;
 }
 
 .contact-us img {

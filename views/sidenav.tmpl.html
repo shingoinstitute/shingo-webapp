@@ -1,4 +1,5 @@
 <md-sidenav
+    style="height: 100vh;"
     layout="column"
     layout-fill
     class="md-sidenav-left roboto"
@@ -37,12 +38,14 @@
             {{state.title}}
         </a>
     </div>
-    <div layout-padding>
-        <div class="contact-us text-center" layout="column">
-            <b>Contact Us</b>
-            <div class="roboto">3521 Old Main Hill, Logan, Utah 84322</div>
-            <a href="tel:4357972279">435.797.2279</a>
-            <a href="mailto:shingo.info@usu.edu">shingo.info@usu.edu</a></b>
-        </div>
+    <span flex><!-- spacer --></span>
+    <div class="contact-us text-center" layout="column">
+        <a class="link-button" href="https://shingoconference.wufoo.com/forms/z10zojjq04xahhq/">Call for Presentations</a>
+        <br>
+        <br>
+        <b>Contact Us</b>
+        <div class="roboto">3521 Old Main Hill, Logan, Utah 84322</div>
+        <a href="tel:4357972279">435.797.2279</a>
+        <a href="mailto:shingo.info@usu.edu">shingo.info@usu.edu</a></b>
     </div>
 </md-sidenav>

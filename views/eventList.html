@@ -9,8 +9,7 @@
         md-gutter="15px"
         layout-padding>
         <md-grid-tile 
-            class="md-whiteframe-6dp"
-            ng-class="{pointer: !vm.isLarge(ev)}"
+            class="md-whiteframe-6dp pointer"
             md-rowspan="{{6 - (!vm.isLarge(ev) ? 3 : 0)}}"
             md-colspan="6"
             md-rowspan-gt-sm="{{vm.getRows(ev)}}"
