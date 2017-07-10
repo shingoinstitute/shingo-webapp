@@ -19,15 +19,16 @@
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body ng-app="core">
-    <div class="ie-container">
+    <div id="ieMessage" class="ie-container">
         <div class="ie-message">
-            <p>Looks like you are using Internet Explorer 10 or 11. Unfortunately, your browser doesn't support the awesome technology we are using on our site. Please use one of the following browsers:</p>
+            <p>Looks like you are using Internet Explorer 10 or 11. Unfortunately, your browser doesn't support the newer technology we are using on our site. You may continue with Internet Explorer, but you may <b>experience display issues</b>. Please use one of the following browsers for the best experience:</p>
             <ul>
                 <li>Edge 14+</li>
                 <li>Firefox 52+</li>
                 <li>Chrome 49+</li>
                 <li>Opera 44+</li>
             </ul>
+            <button id="ieDismiss" class="md-warn md-button md-accent md-raised">Proceed to site</button>
         </div>
     </div>
     <div layout="row" style="min-height: 100%;" ng-controller="MainController as mc">
@@ -56,6 +57,20 @@
             <!-- End Frame content -->
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        var ieMessage = document.getElementById('ieMessage');
+        var ieDismiss = document.getElementById('ieDismiss');
+        console.log('Adding click to ', ieDismiss);
+        ieDismiss.addEventListener('click', function(){
+            console.log('Hiding ieMessage, ', ieMessage);
+            ieMessage.classList.add('hide');
+        });
+    </script>
+
+    <!-- Polyfills -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.includes"></script>
 
     <!-- Vendor -->
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>

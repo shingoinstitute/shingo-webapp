@@ -20,7 +20,7 @@
                 vm.minEventDate = start;
         });
 
-        vm.events = _.sortBy(vm.events, (o) => { return new Date(o.Start_Date__c) });
+        vm.events = _.sortBy(vm.events, function(o) { return new Date(o.Start_Date__c) });
 
         vm.minStudyDate = undefined;
         vm.studyTours.forEach(function(e){
@@ -29,7 +29,7 @@
                 vm.minStudyDate = start;
         });
 
-        vm.studyTours = _.sortBy(vm.studyTours,  (o) => { return new Date(o.Start_Date__c)});
+        vm.studyTours = _.sortBy(vm.studyTours,  function(o) { return new Date(o.Start_Date__c)});
         
 
         vm.events = _.concat(vm.events, vm.studyTours);
@@ -42,7 +42,7 @@
             }
         }
 
-        vm.getCols = function(event, isMd = false){
+        vm.getCols = function(event, isMd){
             if(event.Event_Type__c.includes("Study Tour"))
                 return 3 + (isMd ? 3 : 0);
             return 6;

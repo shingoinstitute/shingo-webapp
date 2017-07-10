@@ -48,8 +48,8 @@
                 </md-card-header>
                 <md-card-content layout="column" layout-align="center center">
                         <div flex class="price-table">
-                            <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records | orderBy: 'Price__c' : 'desc'">
-                                <span flex>{{price.Name}}</span><span style="text-align: right">{{price.Price__c | currency}} USD</span>
+                            <div layout class="price-row" ng-repeat="price in vm.event.Shingo_Prices__r.records">
+                                <span flex>{{price.Name}}</span><span style="text-align: right" ng-show="price.Price__c">{{price.Price__c | currency}} USD</span>
                             </div>
                         </div>
                         <span ng-show="vm.event.Registration_Link__c" flex="10"><!-- spacer --></span>
