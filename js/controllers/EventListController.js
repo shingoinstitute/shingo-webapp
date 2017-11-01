@@ -43,13 +43,14 @@
         }
 
         vm.getCols = function(event, isMd){
-            if(event.Event_Type__c.includes("Study Tour"))
-                return 3 + (isMd ? 3 : 0);
-            return 6;
+            /*if(event.Event_Type__c.includes("Study Tour"))
+                return 3 + (isMd ? 3 : 0);*/
+            return 3 + (isMd ? 3 : 0);
         }
 
         vm.isLarge = function(event){
-            return event.Event_Type__c.includes("Conference") && new Date(event.Start_Date__c) <= vm.minEventDate;
+            //return event.Event_Type__c.includes("Conference") && new Date(event.Start_Date__c) <= vm.minEventDate;
+            return false;
         }
 
         vm.go = function(event){
