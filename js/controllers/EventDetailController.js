@@ -17,6 +17,5 @@
             return a.Order__c - b.Order__c
         });
 
-        $scope.$emit('toggle filter', false);
     }
 })();

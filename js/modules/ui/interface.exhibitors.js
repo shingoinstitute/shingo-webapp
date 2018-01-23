@@ -78,6 +78,9 @@
                         scrollTo($scope, $timeout, 'exhibitorList', $state.params.exhibitor, 50, 600);
 
                     $scope.$emit('toggle filter', true);
+        $scope.$on('$destroy', function() {
+            $scope.$emit('toggle filter', false);
+        });
                 },
                 controllerAs: 'vm',
                 templateUrl: 'views/exhibitors/exhibitors.html',

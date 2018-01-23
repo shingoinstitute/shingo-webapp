@@ -85,6 +85,9 @@
                         scrollTo($scope, $timeout, 'sponsorList', $state.params.sponsor, 50, 600);
 
                     $scope.$emit('toggle filter', true);
+        $scope.$on('$destroy', function() {
+            $scope.$emit('toggle filter', false);
+        });
                 },
                 controllerAs: 'vm',
                 templateUrl: 'views/sponsors/sponsors.html',
