@@ -10,10 +10,11 @@
             layout="column"
             layout-align="center center"
             md-colors="{background: 'warn'}"
-            background-img="{{vm.event.Banner_URL__c}}"
-            background-height="300px"
-            background-color="{{vm.event.Primary_Color__c"
-            background-watch="vm.event"
+            background="{
+                image: vm.event.Banner_URL__c,
+                height: '300px',
+                color: vm.event.Primary_Color__c,
+            }"
             class="detail-banner raleway-large">
             <!--<div class="detail-text">
                 <h2>{{vm.event.Name}}</h2>
@@ -41,7 +42,7 @@
             layout-padding
             layout-align="center center">
             <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="padding: 0;">
-                <md-card-header md-colors="{background: 'primary'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+                <md-card-header md-colors="{background: 'primary'}" background="{color: vm.event.Primary_Color__c}">
                     <md-card-header-text>
                         Pricing
                     </md-card-header-text>
@@ -71,7 +72,7 @@
             layout-align="center center"
             ng-show="vm.higlightSpeakers || vm.highlights">
             <md-card flex md-whiteframe="6" style="padding: 0;">
-                <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+                <md-card-header md-colors="{background: 'accent'}" background="{color: vm.event.Primary_Color__c}">
                     <md-card-header-text>
                         Highlights
                     </md-card-header-text>
