@@ -7,6 +7,12 @@ event-grid-item .imgContainer {
     max-height: 150px;
 }
 
+.colored-bg-grey {
+    background: rgba(128, 128, 128, 0.45);
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
 event-grid-item .imgContainer > .eventName {
     color: white;
     text-align: center;

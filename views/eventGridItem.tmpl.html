@@ -2,10 +2,11 @@
     class="imgContainer "
     layout="row"
     md-colors="{background: 'accent'}"
-    background-img="{{event.Banner_URL__c}}"
-    background-color="{{event.Primary_Color__c}}"
-    background-height="{{isLarge ? '200px' : '100%'}}"
-    background-watch="event"
+    background="{
+        image: event.Banner_URL__c,
+        color: event.Primary_Color__c,
+        height: isLarge ? '200px' : '100%'
+    }"
     layout-align="center center">
     <div ng-class="{'eventName': event.Banner_URL__c != undefined}" class="md-accent">
         <div hide-gt-lg ng-show="isLarge">
@@ -48,9 +49,10 @@
 </div> -->
 <md-grid-tile-footer
     md-colors="{background: 'warn', color: 'grey-50'}"
-    background-img=""
-    background-color="{{event.Primary_Color__c}}"
-    background-watch="event">
+    background="{
+        color: event.Primary_Color__c
+    }"
+>
     <h3>Type: {{event.Event_Type__c}}</h3>
     <span flex><!-- spacer --></span>
 </md-grid-tile-footer>
