@@ -57,6 +57,5 @@
             $state.go('event', {id: event.Id});
         }
 
-        $scope.$emit('toggle filter', false);
     }
 })();

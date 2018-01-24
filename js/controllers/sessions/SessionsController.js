@@ -11,6 +11,9 @@
         var vm = this;
         vm.sessions = sessions;
         $scope.$emit('toggle filter', true);
+        $scope.$on('$destroy', function() {
+            $scope.$emit('toggle filter', false);
+        });
     };
 
 })();

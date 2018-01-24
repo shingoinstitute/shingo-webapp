@@ -10,11 +10,21 @@
             layout="column"
             layout-align="center center"
             md-colors="{background: 'warn'}"
-            background-img="{{vm.event.Banner_URL__c}}"
-            background-height="300px"
-            background-color="{{vm.event.Primary_Color__c"
-            background-watch="vm.event"
+            background="{
+                image: vm.event.Banner_URL__c,
+                height: '300px',
+                color: vm.event.Primary_Color__c,
+            }"
             class="detail-banner raleway-large">
+            <div
+                class="colored-bg-grey"
+                style="max-width: 75%; max-height: 75%;"
+                ng-if="vm.event.Disruptor_Image__c"
+                layout="row"
+                layout-align="center center"
+            >
+                <img ng-src="{{vm.event.Disruptor_Image__c}}" style="max-height: 100%; max-width: 100%;"  />
+            </div>
             <!--<div class="detail-text">
                 <h2>{{vm.event.Name}}</h2>
                 <h1 class="roboto">{{vm.event.Start_Date__c | date : short}} - {{vm.event.End_Date__c | date : short}}</h1>
@@ -25,23 +35,27 @@
         <div
             layout-gt-sm="row"
             layout-padding
-            layout-align="center center">
-            <div ng-show="vm.event.Logo_Large__c" flex layout layout-align="center center">
-                <img ng-src="{{vm.event.Logo_Large__c}}" />
+            layout-align="start center"
+            layout-align-gt-sm="space-between start">
+            <div flex flex-gt-sm="50" layout="column" layout-align="center center">
+                <img ng-src="{{vm.event.Logo_Large__c}}" style="max-height: 33vh;" />
             </div>
-            <span ng-show="vm.event.Sales_Text__c" flex="5"><!-- spacer --></span>
-            <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex class="raleway">
-                <span><h2>{{vm.event.Name}}</h2></span>
-                <span ng-bind-html="vm.event.Sales_Text__c"></span>
+            <div
+            flex
+            layout="row"
+            layout-align="center start"
+            >
+                <md-button flex="66" class="md-raised md-primary" ng-href="{{vm.event.Registration_Link__c}}" target="_blank">Register</md-button>
             </div>
         </div>
         <!-- Pricing Table and Video -->
         <div
             layout-gt-sm="row"
+            layout="column"
             layout-padding
-            layout-align="center center">
-            <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="padding: 0;">
-                <md-card-header md-colors="{background: 'primary'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+            layout-align-gt-sm="space-between start">
+            <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="margin-top: 20px; padding: 0;">
+                <md-card-header md-colors="{background: 'primary'}" background="{color: vm.event.Primary_Color__c}">
                     <md-card-header-text>
                         Pricing
                     </md-card-header-text>
@@ -58,10 +72,13 @@
                         </div>
                 </md-card-content>
             </md-card>
-            <span ng-show="vm.event.Video_Trusted" flex="5"><!-- spacer --></span>
-            <div ng-show="vm.event.Video_Trusted" flex layout layout-align="center center">
-                <iframe width="560" height="315" src="{{vm.event.Video_Trusted}}" frameborder="0" allowfullscreen=""></iframe>
+            <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex flex-order="-1" flex-order-gt-sm="1" class="raleway">
+                <span><h2>{{vm.event.Name}}</h2></span>
+                <span ng-bind-html="vm.event.Sales_Text__c"></span>
             </div>
+        </div>
+        <div ng-show="vm.event.Video_Trusted" flex layout layout-align="center center">
+            <iframe width="560" height="315" src="{{vm.event.Video_Trusted}}" frameborder="0" allowfullscreen=""></iframe>
         </div>
         <!-- Event Highlights (Keynotes and Recipients) -->
         <div
@@ -71,7 +88,7 @@
             layout-align="center center"
             ng-show="vm.higlightSpeakers || vm.highlights">
             <md-card flex md-whiteframe="6" style="padding: 0;">
-                <md-card-header md-colors="{background: 'accent'}" background-img="" background-color="{{vm.event.Primary_Color__c}}" background-watch="vm.event">
+                <md-card-header md-colors="{background: 'accent'}" background="{color: vm.event.Primary_Color__c}">
                     <md-card-header-text>
                         Highlights
                     </md-card-header-text>
