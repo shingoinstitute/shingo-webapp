@@ -59,6 +59,13 @@ event-grid-item .md-button {
     font-weight: 600;
 }
 
+.register-button {
+    height: 4em;
+    font-size: 125%;
+    line-height: 4em;
+    color: #ffffff;
+}
+
 .contact-us {
     position: relative;
     margin-top: 5%;
