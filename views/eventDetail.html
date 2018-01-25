@@ -41,11 +41,19 @@
                 <img ng-src="{{vm.event.Logo_Large__c}}" style="max-height: 33vh;" />
             </div>
             <div
-            flex
-            layout="row"
-            layout-align="center start"
+              flex
+              layout="row"
+              layout-align="center start"
             >
-                <md-button flex="66" class="md-raised md-primary" ng-href="{{vm.event.Registration_Link__c}}" target="_blank">Register</md-button>
+                <md-button
+                  flex="66" 
+                  class="md-raised md-warn register-button"
+                  style="color: #ffffff"
+                  ng-href="{{vm.event.Registration_Link__c}}"
+                  target="_blank"
+                >
+                    Register
+                </md-button>
             </div>
         </div>
         <!-- Pricing Table and Video -->
