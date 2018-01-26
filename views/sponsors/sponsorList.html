@@ -1,0 +1,45 @@
+<div layout="column" layout-fill layout-align="start center" class="roboto">
+    <md-toolbar class="md-warn" layout="row" layout-align="center center">
+        <p><a class="md-primary" href="" ng-click="vm.sponsorship()">Click here</a>&nbsp;to view opportunities to become a sponsor.</p>
+    </md-toolbar>
+    <div layout="row" layout-fill style="overflow: hidden;">
+        <md-list
+            id="sponsorList"
+            flex-gt-sm="33"
+            class="list">
+            <div ng-repeat="type in ['President', 'Champion', 'Benefactor', 'Friend', 'Other']">
+                <md-subheader ng-show="vm.sponsors[type].length" class="md-primary">{{ type }}</md-subheader>
+                <md-list-item
+                    id="{{sponsor.Id}}"
+                    ng-show="vm.sponsors[type].length"
+                    class="md-2-line list-item-container"
+                    md-colors="{'border-color': 'warn'}"
+                    ui-sref="sponsors.details({sponsor: sponsor.Id})"
+                    ui-sref-active="active"
+                    ng-repeat="sponsor in vm.sponsors[type] | orderBy: 'Organization__r.Name' | filter : mc.filter"
+                    aria-label="Go to sponsor {{sponsor.Name}}">
+                    <sponsor-item sponsor="sponsor" flex></sponsor-item>
+                    <md-divider ng-if="vm.sponsors[type].length"></md-divider>
+                </md-list-item>
+            </div>
+        </md-list>
+        <div hide show-gt-sm flex="66" layout-padding class="list-item-detail raleway">
+            <div ui-view></div>
+        </div>
+        <div
+            hide-gt-sm
+            ng-show="$state.params.sponsor"
+            class="mobile-detail-container">
+            <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                    <h2>Sponsor Details</h2>
+                    <span flex><!-- spacer --></span>
+                    <md-button class="md-icon-button" ui-sref="sponsors({id: ev.Id})">
+                        <md-icon md-icon-font="close" aria-label="Close dialog">close</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

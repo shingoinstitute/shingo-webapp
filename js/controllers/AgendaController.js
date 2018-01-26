@@ -21,7 +21,6 @@
             if(path.length == 2) path = path[1].split('/')[0];
             else path = vm.agenda[0].Id;
             
-            console.log('path', path);
             vm.currentNavItem = _.findIndex(vm.agenda,['Id', path]);
             if(toState.url == '/events/:id/agenda') $state.go('agenda.day', {day: vm.agenda[vm.currentNavItem].Id});
         })
