@@ -17,7 +17,6 @@
             if(path.length == 2) path = path[1].split('/')[0];
             else path = 'prize';
             
-            console.log('path', path);
             vm.currentNavItem = _.findIndex(awards, function(o){ return o == path });
             if(toState.url == '/events/:id/recipients') $state.go('recipients.type', {type: awards[vm.currentNavItem]});
         });

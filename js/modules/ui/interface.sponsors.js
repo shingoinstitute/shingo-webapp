@@ -48,8 +48,6 @@
                     vm.sponsors['Friend'] = _.filter(sponsors, {'Sponsor_Level__c': 'Friend'});
                     vm.sponsors['Other'] = _.filter(sponsors, {'Sponsor_Level__c': 'Other'});
 
-                    console.log("sponsor info: ", sponsorshipInfo)
-
                     vm.sponsorship = function(){
                         $mdDialog.show({
                             parent: angular.element(document.body),
@@ -85,12 +83,12 @@
                         scrollTo($scope, $timeout, 'sponsorList', $state.params.sponsor, 50, 600);
 
                     $scope.$emit('toggle filter', true);
-        $scope.$on('$destroy', function() {
-            $scope.$emit('toggle filter', false);
-        });
+                    $scope.$on('$destroy', function() {
+                        $scope.$emit('toggle filter', false);
+                    });
                 },
                 controllerAs: 'vm',
-                templateUrl: 'views/sponsors/sponsors.html',
+                templateUrl: 'views/sponsors/sponsorList.html',
                 resolve: {
                     sponsors: ["Events", "$stateParams", function(Events, $stateParams){
                         return Events.sponsors($stateParams.id);

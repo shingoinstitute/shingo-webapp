@@ -1,7 +1,6 @@
 (function(){
     'use strict';
 
-    console.log('Loading Event List Controller');
     angular.module('interface')
     .controller('EventListController', ['$scope', '$mdSidenav', '$state', 'events', '_', EventListController]);
 
