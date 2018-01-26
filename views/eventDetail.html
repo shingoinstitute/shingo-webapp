@@ -62,6 +62,10 @@
             layout="column"
             layout-padding
             layout-align-gt-sm="space-between start">
+            <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex flex-order="-1" flex-order-gt-sm="1" class="raleway">
+                <span><h2>{{vm.event.Name}}</h2></span>
+                <span ng-bind-html="vm.event.Sales_Text__c"></span>
+            </div>
             <md-card ng-show="vm.event.Shingo_Prices__r" flex-gt-sm="50" md-whiteframe="6" style="margin-top: 20px; padding: 0;">
                 <md-card-header md-colors="{background: 'primary'}" background="{color: vm.event.Primary_Color__c}">
                     <md-card-header-text>
@@ -80,10 +84,6 @@
                         </div>
                 </md-card-content>
             </md-card>
-            <div style="text-align: left;" ng-show="vm.event.Sales_Text__c" flex flex-order="-1" flex-order-gt-sm="1" class="raleway">
-                <span><h2>{{vm.event.Name}}</h2></span>
-                <span ng-bind-html="vm.event.Sales_Text__c"></span>
-            </div>
         </div>
         <div ng-show="vm.event.Video_Trusted" flex layout layout-align="center center">
             <iframe width="560" height="315" src="{{vm.event.Video_Trusted}}" frameborder="0" allowfullscreen=""></iframe>
