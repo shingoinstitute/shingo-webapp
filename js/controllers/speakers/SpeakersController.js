@@ -17,7 +17,6 @@
             if(path.length == 2) path = path[1].split('/')[0];
             else path = 'keynote';
             
-            console.log('path', path);
             vm.currentNavItem = _.findIndex(types, function(o){ return o == path });
             if(toState.url == '/events/:id/speakers') $state.go('speakers.type', {type: types[vm.currentNavItem]});
         })
