@@ -328,26 +328,6 @@ img.recipientPhoto {
     }
 }
 
-_::-webkit-full-page-media, _:future, :root md-card, .layout-column, .layout-row {
-    display: -webkit-box; 
-}
-
-_::-webkit-full-page-media, _:future, :root .column.layout-column {
-    display: -webkit-flex;
-}
-
-_::-webkit-full-page-media, _:future, :root .column.layout-row {
-    display: -webkit-flex;
-}
-
-_::-webkit-full-page-media, _:future, :root .price-row > span {
-    display: -webkit-box;
-}
-
-_::-webkit-full-page-media, _:future, :root .layout-align-center-center {
-    text-align: center;
-}
-
 .ie-container {
     display: none;
     position: absolute;
