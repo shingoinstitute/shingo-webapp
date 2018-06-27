@@ -17,7 +17,7 @@
             md-rowspan-gt-lg="{{vm.getRows(ev)}}"
             md-colspan-gt-lg="{{vm.getCols(ev) * 2}}"
             ng-repeat="ev in vm.events"
-            ng-click="vm.go(ev)">
+        >
             <event-grid-item
                 event="ev"
                 is-large="vm.isLarge(ev)"

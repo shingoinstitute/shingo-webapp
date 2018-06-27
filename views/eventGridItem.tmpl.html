@@ -3,56 +3,29 @@
     layout="row"
     md-colors="{background: 'accent'}"
     background="{
-        image: event.Banner_URL__c,
-        color: event.Primary_Color__c,
-        height: isLarge ? '200px' : '100%'
+        image: $ctrl.event.Banner_URL__c,
+        color: $ctrl.event.Primary_Color__c,
+        height: $ctrl.isLarge ? '200px' : '100%'
     }"
+    ng-click="$ctrl.go()"
     layout-align="center center">
-    <div ng-class="{'eventName': event.Banner_URL__c != undefined}" class="md-accent">
-        <div hide-gt-lg ng-show="isLarge">
-            <h2>{{event.Name}}</h2>
+    <div ng-class="{'eventName': $ctrl.event.Banner_URL__c != undefined}" class="md-accent">
+        <div hide-gt-lg ng-show="$ctrl.isLarge">
+            <h2>{{$ctrl.event.Name}}</h2>
         </div>
-        <div class="smallEventDetail" ng-show="!isLarge">
-            <h3>{{event.Name}}</h3>
-            <b>{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</b>
+        <div class="smallEventDetail" ng-show="!$ctrl.isLarge">
+            <h3>{{$ctrl.event.Name}}</h3>
+            <b>{{$ctrl.event.Display_Location__c}} &mdash; {{$ctrl.event.Start_Date__c | date : 'MMM d' }} - {{$ctrl.event.End_Date__c | date : 'MMM d'}}, {{$ctrl.event.End_Date__c | date : 'yyyy'}}</b>
             <h4>Click to Learn More</h4>
         </div>
     </div>
 </div>
-<!-- <div ng-show="isLarge" layout="column" layout-padding layout-align="center center" class="raleway column">
-    <div hide show-gt-lg ng-show="isLarge">
-        <h2>{{event.Name}}</h2>
-    </div>
-    <h3 hide show-gt-lg style="text-align: center; margin: 0px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMMM d' }} - {{event.End_Date__c | date : 'MMMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h3>
-    <h4 hide-gt-lg style="text-align: center; margin: 5px;">{{event.Display_Location__c}} &mdash; {{event.Start_Date__c | date : 'MMM d' }} - {{event.End_Date__c | date : 'MMM d'}}, {{event.End_Date__c | date : 'yyyy'}}</h4>
-    <div layout="column" layout-align="center center" style="width: 100%;">
-        <div hide show-gt-sm flex-gt-lg="60" layout="column" layout-align="center center" style="text-align: left; font-size: 95%;">
-            <div class="grid-text" ng-bind-html="event.Sales_Text__c"></div>
-        </div>
-        <div flex layout="row" class="column" style="width: 100%;" layout-align="center center">
-            <md-button
-                class="md-primary md-raised"
-                ng-href="#/events/{{event.Id}}"
-                ui-sref="event({id: event.Id})">
-                    Learn More
-            </md-button>
-            <span ng-show="event.Registration_Link__c" flex="10"></span>
-            <md-button
-                ng-show="event.Registration_Link__c"
-                class="md-accent md-raised"
-                ng-href="{{event.Registration_Link__c}}"
-                target="_blank">
-                    Register
-            </md-button>
-        </div>
-    </div>
-</div> -->
 <md-grid-tile-footer
     md-colors="{background: 'warn', color: 'grey-50'}"
     background="{
-        color: event.Primary_Color__c
+        color: $ctrl.event.Primary_Color__c
     }"
 >
-    <h3>Type: {{event.Event_Type__c}}</h3>
+    <h3>Type: {{$ctrl.event.Event_Type__c}}</h3>
     <span flex><!-- spacer --></span>
 </md-grid-tile-footer>
