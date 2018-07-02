@@ -10,7 +10,7 @@ if [[ "$TAG" = "test" ]]; then
   CONT_NAME+="-test"
 fi
 
-NAME="${NAME:=CONT_NAME}"
+NAME="${NAME:-$CONT_NAME}"
 
 docker run -itd                     \
     --name "$NAME"                  \
