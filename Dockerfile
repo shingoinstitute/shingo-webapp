@@ -1,21 +1,15 @@
-FROM node
+### STAGE 1: BUILD ###
+FROM node:8.9-alpine as builder
+ENV NODE_ENV production
+WORKDIR /usr/src/app
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent
+COPY . .
 
-RUN apt-get update
+### STAGE 2: SETUP ###
+FROM nginx:alpine
 
-RUN apt-get install -y nginx
-
-COPY nginx.conf /etc/nginx/nginx.conf
-
-RUN mkdir -p /etc/nginx/sites-enabled/
-
-COPY events /etc/nginx/sites-available/events
-
-RUN rm /etc/nginx/sites-enabled/default
-
-RUN ln -s /etc/nginx/sites-available/events /etc/nginx/sites-enabled/events
-
-WORKDIR /shingo-webapp
-
-EXPOSE 80
-
-CMD [ "nginx", "-g", "daemon off;" ]
+COPY nginx/default.conf /etc/nginx/conf.d/
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /usr/src/app /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
