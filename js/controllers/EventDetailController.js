@@ -4,11 +4,14 @@
     const AUTOPLAY_VIDEO = true
 
     angular.module('interface')
-    .controller('EventDetailController', ['$scope', '$sce', 'event', 'highlightSpeakers', EventDetailController]);
+    .controller('EventDetailController', ['$window', '$sce', 'event', 'highlightSpeakers', EventDetailController]);
 
-    function EventDetailController($scope, $sce, event, highlightSpeakers){
+    function EventDetailController($window, $sce, event, highlightSpeakers){
         var vm = this;
         vm.event = event;
+        if (vm.event.Content_on_CVENT__c) {
+            $window.location.href = vm.event.Registration_Link__c
+        }
         if (vm.event.Video__c) {
             const videoURL = new URL(vm.event.Video__c)
             if (!videoURL.searchParams.has('autoplay') && AUTOPLAY_VIDEO) {
