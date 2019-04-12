@@ -31,7 +31,7 @@
         vm.studyTours = _.sortBy(vm.studyTours,  function(o) { return new Date(o.Start_Date__c)});
         
 
-        vm.events = _.concat(vm.events, vm.studyTours);
+        //vm.events = _.concat(vm.events, vm.studyTours);
 
         vm.getRows = function(event){
             if(vm.isLarge(event)){
