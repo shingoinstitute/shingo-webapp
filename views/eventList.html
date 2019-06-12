@@ -53,4 +53,29 @@
             </event-grid-item>
         </md-grid-tile>
     </md-grid-list>
+    <h1 style="text-align: center; width: 380px; margin-left: auto; margin-right: auto; margin-bottom: 20px; border-bottom: 5px solid #b17c31;">Conferences & Summits</h1>
+    <p style="text-align: center; max-width: 90%; margin: 0 auto 15px;">Conferences!! and summits keep your continuous improvement efforts fresh and invigorated. Conferences are larger and apply to any industry. Summits are smaller and focus on specific industries.</p>
+    <md-grid-list
+        md-cols="6" md-cols-lg="12" md-cols-gt-lg="24"
+        md-row-height="50px"
+        md-gutter="15px"
+        layout-padding>
+        <md-grid-tile 
+            class="md-whiteframe-6dp pointer"
+            md-rowspan="{{6 - (!vm.isLarge(ev) ? 3 : 0)}}"
+            md-colspan="6"
+            md-rowspan-gt-sm="{{vm.getRows(ev)}}"
+            md-colspan-gt-sm="{{vm.getCols(ev, true)}}"
+            md-rowspan-gt-lg="{{vm.getRows(ev)}}"
+            md-colspan-gt-lg="{{vm.getCols(ev) * 2}}"
+            ng-repeat="ev in vm.events"
+            style="border-radius: 10px;"
+        >
+            <event-grid-item
+                event="ev"
+                is-large="vm.isLarge(ev)"
+                layout-fill>
+            </event-grid-item>
+        </md-grid-tile>
+    </md-grid-list>
 </div>
