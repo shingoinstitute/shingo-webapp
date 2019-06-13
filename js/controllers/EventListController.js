@@ -9,8 +9,9 @@
         var typeFilter = function(arrVal, othVal){
             return arrVal.Event_Type__c == othVal.Event_Type__c;
         }
-        vm.events = _.differenceWith(events, [{'Event_Type__c': 'Study Tour'}], typeFilter);
-        vm.studyTours = _.differenceWith(events, vm.events, typeFilter);
+        vm.events = _.differenceWith(events, [{'Event_Type__c': 'Study Tour'},{'Event_Type__c': 'Showcase'}], typeFilter);
+        vm.studyTours = _.differenceWith(events, [{'Event_Type__c': 'Summit'},{'Event_Type__c': 'Showcase'},{'Event_Type__c': 'Conference'}], typeFilter);
+        vm.showCases = _.differenceWith(events, [{'Event_Type__c': 'Study Tour'},{'Event_Type__c': 'Summit'},{'Event_Type__c': 'Conference'}], typeFilter);
 
         vm.minEventDate = undefined;
         vm.events.forEach(function(e){
