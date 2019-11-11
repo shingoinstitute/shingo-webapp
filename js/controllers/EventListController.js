@@ -30,6 +30,8 @@
         });
 
         vm.studyTours = _.sortBy(vm.studyTours,  function(o) { return new Date(o.Start_Date__c)});
+
+        vm.showCases= _.sortBy(vm.showCases,  function(o) { return new Date(o.Start_Date__c)});
         
 
         //vm.events = _.concat(vm.events, vm.studyTours);
